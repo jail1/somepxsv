@@ -1,0 +1,277 @@
+[
+  {
+    "key": "_RawProducts_",
+    "en_US": "Raw products",
+    "ro_RO": "Materii prime"
+  },
+  {
+    "key": "_NoRawMats_",
+    "en_US": "There are no raw materials defined. Try the 'add' button",
+    "ro_RO": "Nu aveți materii prime definite. Încercati butonul 'adaugă'!"
+  },
+  {
+    "key": "_NoProducts_",
+    "en_US": "There are no products defined. Try the 'add' button",
+    "ro_RO": "Nu aveți produse definite. Încercati butonul 'adaugă'!"
+  },
+  {
+    "key": "_RawGroup_",
+    "en_US": "Raw materials group",
+    "ro_RO": "Grup materii prime"
+  },
+  {
+    "key": "_RawGroupName_",
+    "en_US": "Raw materials group name",
+    "ro_RO": "Nume grup"
+  },
+  {
+    "key": "_RawGroupOrder_",
+    "en_US": "Order no.",
+    "ro_RO": "Număr de ordine"
+  },
+  {
+    "key": "_MaterialName_",
+    "en_US": "Material name",
+    "ro_RO": "Nume material"
+  },
+  {
+    "key": "_MaterialDescription_",
+    "en_US": "Description",
+    "ro_RO": "Descriere"
+  },
+  {
+    "key": "_MaterialDefault_",
+    "en_US": "Is default for products",
+    "ro_RO": "Adaugat automat la toate produsele"
+  },
+  {
+    "key": "_MaterialNotDefault_",
+    "en_US": "Is default for products",
+    "ro_RO": "Grupul se adaugă manual"
+  },
+  {
+    "key": "_MaterialListed_",
+    "en_US": "Is selectable",
+    "ro_RO": "Materiile prime sunt selectabile în produs"
+  },
+  {
+    "key": "_MaterialNotListed_",
+    "en_US": "Is listed in the product components list",
+    "ro_RO": "Materiile prime NU sunt selectabile în produs"
+  },
+  {
+    "key": "_RawMaterial_",
+    "en_US": "Raw Material",
+    "ro_RO": "Materie primă"
+  },
+  {
+    "key": "_AquisitionPrice_",
+    "en_US": "Aquisition price",
+    "ro_RO": "Preț de achiziție (EUR)"
+  },
+  {
+    "key": "_AquisitionUnits_",
+    "en_US": "Aquisition units",
+    "ro_RO": "Cantitate achiziție"
+  },
+  {
+    "key": "_UsagePerProductUnits_",
+    "en_US": "Usage per sqm",
+    "ro_RO": "Cantitate folosită pentru 1mp produs"
+  },
+  {
+    "key": "_UsagePerProductPrice_",
+    "en_US": "Price (1sqm)",
+    "ro_RO": "Cost 1mp produs (EUR)"
+  },
+  {
+    "key": "_SellingPrice_",
+    "en_US": "Selling price",
+    "ro_RO": "Pret de vânzare pentru 1mp (EUR)"
+  },
+  {
+    "key": "_ErrorSelling_",
+    "en_US": "Error : selling price is smaller than production cost",
+    "ro_RO": "Eroare : costul de producție este mai mare"
+  },
+  {
+    "key": "_Units_",
+    "en_US": " units",
+    "ro_RO": " unități"
+  },
+  {
+    "key": "_AddedValue_",
+    "en_US": "Added value",
+    "ro_RO": "Adaos %"
+  },
+  {
+    "key": "_ProductsList_",
+    "en_US": "Products list",
+    "ro_RO": "Listă produse"
+  },
+  {
+    "key": "_CreateProductQuestion_",
+    "en_US": "Which kind of product you want to define?",
+    "ro_RO": "Ce fel de produs definiți?"
+  },
+  {
+    "key": "_SimpleProduct_",
+    "en_US": "Simple product",
+    "ro_RO": "Produs simplu"
+  },
+  {
+    "key": "_ComplexProduct_",
+    "en_US": "Complex product",
+    "ro_RO": "Produs compus"
+  },
+  {
+    "key": "_DefineProduct_",
+    "en_US": "Define product",
+    "ro_RO": "Definire produs"
+  },
+  {
+    "key": "_CloneProduct_",
+    "en_US": "Clone product",
+    "ro_RO": "Clonare produs"
+  },
+  {
+    "key": "_BasicProducts_",
+    "en_US": "Basic products",
+    "ro_RO": "Produse"
+  },
+  {
+    "key": "_RawMaterialGroups_",
+    "en_US": "Raw Material Groups",
+    "ro_RO": "Grupuri materii prime"
+  },
+  {
+    "key": "_ProductIsDisplayed_",
+    "en_US": "Product is displayed in shopcart",
+    "ro_RO": "Produsul este afișat clienților"
+  },
+  {
+    "key": "_ProductIsNotDisplayed_",
+    "en_US": "Product is NOT displayed in shopcart",
+    "ro_RO": "Produsul NU este afișat clienților"
+  },
+  {
+    "key": "_DisplayableProducts_",
+    "en_US": "Show displayable products",
+    "ro_RO": "Arată produse publice"
+  },
+  {
+    "key": "_ProductName_",
+    "en_US": "Product name",
+    "ro_RO": "Nume produs"
+  },
+  {
+    "key": "_ProductDescription_",
+    "en_US": "Description",
+    "ro_RO": "Descriere"
+  },
+  {
+    "key": "_ProductWidth_",
+    "en_US": "Product width (mm)",
+    "ro_RO": "Lățime (mm)"
+  },
+  {
+    "key": "_ProductHeight_",
+    "en_US": "Product height (mm)",
+    "ro_RO": "Avans (mm)"
+  },
+  {
+    "key": "_ProductLostRatio_",
+    "en_US": "Lost ratio (%)",
+    "ro_RO": "Pierderi (%)"
+  },
+  {
+    "key": "_ProductMinQuantity_",
+    "en_US": "Product minimum quantity",
+    "ro_RO": "Cantitate minimă (bucăți)"
+  },
+  {
+    "key": "_ProductContent_",
+    "en_US": "Product Content (drag and drop)",
+    "ro_RO": "Componență produs (drag and drop)"
+  },
+  {
+    "key": "_PricesIn_",
+    "en_US": "Prices in ",
+    "ro_RO": "Prețuri în "
+  },
+  {
+    "key": "_PleaseDefineRatio_",
+    "en_US": "Please define ratio (width and height) to get compatible simple products!",
+    "ro_RO": "Vă rugăm definiți rația (avans și lățime) pentru a încărca lista de produse compatibile!"
+  },
+  {
+    "key": "_SelectorError_",
+    "en_US": "Product already has a selector! Please use one selector per product!",
+    "ro_RO": "Produsul are deja un 'selector'! Produsele nu pot avea mai mult de un selector!"
+  },
+  {
+    "key": "_SaveProductError_",
+    "en_US": "Please save product first!",
+    "ro_RO": "Vă rugăm salvați întâi produsul, pentru a putea face această operațiune!"
+  },
+  {
+    "key": "_OutPrice_",
+    "en_US": "Selling price",
+    "ro_RO": "Preț vânzare"
+  },
+  {
+    "key": "_Production_",
+    "en_US": "Production Cost",
+    "ro_RO": "Cost producție"
+  },
+  {
+    "key": "_ProductSummary_",
+    "en_US": "Product Summary",
+    "ro_RO": "Sumar produs"
+  },
+  {
+    "key": "_Total_",
+    "en_US": "Total",
+    "ro_RO": "Total"
+  },
+  {
+    "key": "_IncompletePrices_",
+    "en_US": "Error : there are products that have incomplete selling prices!",
+    "ro_RO": "Eroare : aveți produse simple care nu au prețurile de vânzare definite!"
+  },
+  {
+    "key": "_IncompletePrices2_",
+    "en_US": "Error : the product has incomplete selling prices!",
+    "ro_RO": "Eroare : produsul nu are prețurile de vânzare definite!"
+  },
+  {
+    "key": "_SimpleProduct_",
+    "en_US": "Simple product",
+    "ro_RO": "Produs simplu"
+  },
+  {
+    "key": "_ComplexProduct_",
+    "en_US": "Complex product",
+    "ro_RO": "Produs compus"
+  },
+  {
+    "key": "_ParentUser_",
+    "en_US": "Parent user",
+    "ro_RO": "Utilizatorul \"părinte\""
+  },
+  {
+    "key": "_ParentUserError_",
+    "en_US": "Please select a parent user",
+    "ro_RO": "Vă rugăm INSISTENT selectați utilizatorul \"părinte\""
+  },
+  {
+    "key": "_NoOne_",
+    "en_US": "no-one",
+    "ro_RO": "nimeni"
+  },
+  {
+    "key": "",
+    "en_US": "",
+    "ro_RO": ""
+  }
+]

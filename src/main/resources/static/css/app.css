@@ -1,0 +1,160 @@
+/************
+ * Left MENU
+ ************/
+.site-sidenav,
+.site-sidenav.md-locked-open-add-active,
+.site-sidenav.md-locked-open {
+    width: 254px;
+    min-width: 254px;
+    max-width: 254px;
+}
+.site-sidenav > * {
+    min-width: 218px;
+}
+.left-menu,
+.left-menu ul {
+    list-style: none;
+    padding: 0;
+    /**background-color: #00BCD4;**/
+}
+.left-menu li {
+    margin: 0;
+    /**background-color: #00BCD4;**/
+    /**padding-left : 20px;**/
+}
+.left-menu > li {
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+    /**background-color: #00BCD4;**/
+}
+.left-menu .md-button {
+    border-radius: 0;
+    color: inherit;
+    cursor: pointer;
+    display: block;
+    line-height: 40px;
+    margin: 0;
+    max-height: 40px;
+    overflow: hidden;
+    padding: 0px 16px;
+    text-align: left;
+    text-decoration: none;
+    white-space: normal;
+    width: 100%;
+}
+.left-menu button.md-button::-moz-focus-inner {
+    padding: 0;
+}
+.left-menu .md-button.active {
+    color: #03a9f4;
+}
+.menu-heading {
+    display: block;
+    line-height: 40px;
+    margin: 0;
+    padding: 0px 16px;
+    text-align: left;
+    width: 100%;
+}
+.left-menu li.parentActive,
+.left-menu li.parentActive .menu-toggle-list {
+    background-color: #f6f6f6;
+}
+.menu-toggle-list {
+    background: #fff;
+    max-height: 1300px;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    -webkit-transition: 0.75s cubic-bezier(0.35, 0, 0.25, 1);
+    -webkit-transition-property: max-height;
+    -moz-transition: 0.75s cubic-bezier(0.35, 0, 0.25, 1);
+    -moz-transition-property: max-height;
+    transition: 0.75s cubic-bezier(0.35, 0, 0.25, 1);
+    transition-property: max-height;
+}
+.menu-toggle-list.ng-hide {
+    max-height: 0;
+}
+.left-menu .menu-toggle-list a.md-button {
+    display: block;
+    font-weight: 400;
+    padding: 0 16px 0 32px;
+    text-transform: none;
+}
+.md-button-toggle .md-toggle-icon {
+    display: block;
+    margin-left: auto;
+    speak: none;
+    vertical-align: middle;
+    transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    transition: transform 0.3s ease-in-out;
+    -webkit-transition: -webkit-transform 0.3s ease-in-out;
+}
+.md-button-toggle .md-toggle-icon.toggled {
+    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+}
+/* End Left Menu */
+.md-button:hover {
+    box-shadow: none;
+    border: none;
+    transform: none;
+    -webkit-transform: none;
+}
+.inputErrorsApp {
+    min-height: 48px;
+}
+/*TOASTS*/
+.md-toast.error {
+    background-color: red;
+}
+.md-toast.success {
+    background-color: green;
+}
+/** md-table **/
+.md-table {
+    min-width: 100%;
+    border-collapse: collapse;
+}
+
+.md-table tbody tr:hover, .md-table tbody tr:focus {
+    /**cursor:pointer;**/
+    background-color:rgba(63,81,181,0.2);
+}
+
+.md-table-header {
+    border-bottom: 1px solid rgb(230,230,230);
+    color: rgb(130,130,130);
+    text-align: left;
+    font-size: 0.75em;
+    font-weight: 700;
+    padding: 16px 16px 16px 0;
+}
+
+.md-table-header a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.md-table-caret {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.md-table-content {
+    font-size: 0.8em;
+    padding: 16px 16px 16px 0;
+    height: 24px;
+}
+
+.md-table-footer {
+    height:40px;
+}
+
+.md-table-footer-item {
+    width: 40px;
+    height: 40px;
+    vertical-align:middle;
+}
+/** end of md-table **/

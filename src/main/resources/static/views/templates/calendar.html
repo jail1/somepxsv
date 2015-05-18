@@ -1,0 +1,43 @@
+<div class="cal-context" ng-switch="view" layout="column" layout-fill>
+
+    <div ng-switch-default>The value passed to calendar-view is not set</div>
+
+    <!--<main-calendar-year
+          events="events"
+          current-day="currentDay"
+          on-event-click="onEventClick"
+          on-edit-event-click="onEditEventClick"
+          on-delete-event-click="onDeleteEventClick"
+          on-timespan-click="onTimespanClick"
+          edit-event-html="editEventHtml"
+          delete-event-html="deleteEventHtml"
+          auto-open="autoOpen"
+          ng-switch-when="year"></main-calendar-year>-->
+
+    <main-calendar-month
+            events="events"
+            current-day="currentDay"
+            on-event-click="onEventClick"
+            on-edit-event-click="onEditEventClick"
+            on-delete-event-click="onDeleteEventClick"
+            on-timespan-click="onTimespanClick"
+            edit-event-html="editEventHtml"
+            delete-event-html="deleteEventHtml"
+            auto-open="autoOpen"
+            ng-switch-when="month"></main-calendar-month>
+
+    <main-calendar-week
+            events="events"
+            current-day="currentDay"
+            on-event-click="onEventClick"
+            ng-switch-when="week"></main-calendar-week>
+
+    <main-calendar-day
+            events="events"
+            current-day="currentDay"
+            on-event-click="onEventClick"
+            day-view-start="dayViewStart"
+            day-view-end="dayViewEnd"
+            day-view-split="dayViewSplit || 30"
+            ng-switch-when="day"></main-calendar-day>
+</div>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
+    <file url="file://$PROJECT_DIR$/js/controllers/admin/adminComposedProductController.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/js/controllers/admin/adminRawProductsController.js" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/js/i18n/admin_locales.json" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/js/i18n/admin_menu_locale.json" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/js/i18n/agency_menu_locale.json" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/views/admin/admin_define_composed_product.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/views/admin/admin_define_simple_product.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/views/admin/admin_raw_products.html" charset="UTF-8" />
+  </component>
+</project>

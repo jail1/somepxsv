@@ -1,0 +1,38 @@
+<md-button class="md-button-toggle"
+           ng-click="toggle()"
+           ng-if="section.abstract && !section.displayed"
+           aria-controls="left-menu-{{section.name.key}}"
+           aria-expanded="{{isOpen()}}">
+    <div flex layout="row">
+        {{section.name.key | i18n}}
+        <span flex></span>
+    <span aria-hidden="true" class="md-toggle-icon" ng-class="{'toggled' : isOpen()}">
+      <md-icon md-svg-src="/images/icons/arrow_drop_up.svg"></md-icon>
+    </span>
+    </div>
+  <span class="md-visually-hidden">
+    Toggle {{isOpen()? 'expanded' : 'collapsed'}}
+  </span>
+</md-button>
+<md-button class="md-button-toggle"
+           ng-click="toggle()"
+           ui-sref="{{section.route}}"
+           ng-if="!section.abstract && !section.displayed"
+           aria-controls="left-menu-{{section.name.key}}"
+           aria-expanded="{{isOpen()}}">
+    <div flex layout="row">
+        {{section.name.key | i18n}}
+        <span flex></span>
+    <span aria-hidden="true" class="md-toggle-icon" ng-class="{'toggled' : isOpen()}">
+      <md-icon md-svg-src="/images/icons/arrow_drop_up.svg"></md-icon>
+    </span>
+    </div>
+  <span class="md-visually-hidden">
+    Toggle {{isOpen()? 'expanded' : 'collapsed'}}
+  </span>
+</md-button>
+<ul ng-show="isOpen()" class="menu-toggle-list" id="left-menu-{{section.name.key}}">
+    <li ng-repeat="page in section.pages">
+        <menu-link section="page" ng-if="!page.displayed"></menu-link>
+    </li>
+</ul>

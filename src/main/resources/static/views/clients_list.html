@@ -1,0 +1,62 @@
+<md-content layout="column" flex class="md-padding">
+    <div layout="row" layout-align="space-between center">
+        <md-subheader class="md-primary" i18n="_YourClients_"></md-subheader>
+        <md-button class="md-icon-button" ng-click="goToClientDefinition()" aria-label="New client">
+            <md-icon md-svg-icon="plus"></md-icon>
+        </md-button>
+    </div>
+    <md-divider></md-divider>
+    <div ui-tree="treeCallbacks" id="tree-root" data-empty-placeholder-enabled="true">
+        <ol ui-tree-nodes ng-model="users">
+            <li ng-repeat="node in users" ui-tree-node ng-include="'nodes_renderer.html'"></li>
+        </ol>
+    </div>
+</md-content>
+<!-- Nested node template -->
+<script type="text/ng-template" id="nodes_renderer.html">
+    <md-card ui-tree-handle
+             class="tree-node tree-node-content"
+             layout="row"
+             layout-align="start center"
+             ng-attr-data-nodrag="{{node.accountType == 'none'}}">
+
+        <md-button class="md-icon-button"
+                   ng-click="toggleOpenNode(this)"
+                   ng-class="{'md-primary' : collapsed}"
+                   aria-label="Toggle"
+                   ng-show="node.referees && node.referees.length > 0"
+                   data-nodrag>
+            <md-icon ng-show="collapsed" md-svg-icon="arrow-down"></md-icon>
+            <md-icon ng-show="!collapsed" md-svg-icon="arrow-up"></md-icon>
+        </md-button>
+
+        <span style="width: 48px" ng-show="!node.referees || node.referees.length == 0"></span>
+
+        <md-icon ng-if="node.accountType == 'ROLE_PHOTOGRAPHER'" md-svg-icon="camera" layout-padding></md-icon>
+        <md-icon ng-if="node.accountType == 'ROLE_PHOTOGRAPHERS_CLIENT'" md-svg-icon="account-key"
+                 layout-padding></md-icon>
+
+        <span flex>{{::node.username}}</span>
+
+        <md-button data-nodrag
+                   ng-if="node.accountType != 'none'"
+                   class="md-icon-button md-primary"
+                   ng-click="editAccount($event, this)"
+                   aria-label="Edit">
+            <md-icon md-svg-icon="eye"></md-icon>
+        </md-button>
+
+        <md-button data-nodrag
+                   ng-if="node.accountType != 'none'"
+                   class="md-icon-button md-warn"
+                   ng-click="askQuestionThenRemove($event, this)"
+                   aria-label="Delete">
+            <md-icon md-svg-icon="delete"></md-icon>
+        </md-button>
+
+    </md-card>
+    <ol ui-tree-nodes ng-model="node.referees" ng-show="!collapsed">
+        <li ng-repeat="node in node.referees" ui-tree-node ng-include="'nodes_renderer.html'">
+        </li>
+    </ol>
+</script>

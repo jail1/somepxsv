@@ -1,0 +1,59 @@
+<md-toolbar class="md-theme-indigo">
+    <h1 class="md-toolbar-tools">Adăugare rezervare</h1>
+</md-toolbar>
+<md-content layout="column" flex>
+    <md-input-container>
+        <label>Nume</label>
+        <input ng-model="user.title" aria-label="title" md-sidenav-focus>
+    </md-input-container>
+    <md-input-container>
+        <label>Telefon</label>
+        <input ng-model="user.email" type="email" aria-label="email">
+    </md-input-container>
+    <div>
+        <label>Data rezervării</label>
+        <md-date-picker
+                model="pickedDate"
+                date-selected="dateSelected($value)"
+                label="Alegeți o dată"
+                locale="ro"
+                fixed-label="true"
+                popup-template="'popup.html'"
+                icon="calendar">
+        </md-date-picker>
+        <md-date-picker
+                model="pickedDate"
+                date-selected="dateSelected($value)"
+                label="Alegeți o dată"
+                locale="ro"
+                fixed-label="true"
+                popup-template="'popup.html'"
+                icon="calendar">
+        </md-date-picker>
+    </div>
+    <md-input-container>
+        <label>Serviciul</label>
+        <input type="datetime" ng-model="user.submissionDatetime" aria-label="datetime">
+    </md-input-container>
+    <md-input-container flex>
+        <label>Prestator</label>
+        <textarea ng-model="user.biography" columns="1" md-maxlength="150" aria-label="presta"></textarea>
+    </md-input-container>
+    <md-autocomplete md-selected-item="selectedItem" md-search-text="searchText"
+                     md-items="item in getMatches(searchText)" md-item-text="item.display"
+                     aria-label="autocomplete">
+        <span md-highlight-text="searchText">{{item.display}}</span>
+    </md-autocomplete>
+</md-content>
+<md-bottom-sheet>
+    <div class="onoffswitch">
+        <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked aria-label="checkbox">
+        <label class="onoffswitch-label" for="myonoffswitch">
+                <span class="onoffswitch-inner">
+                    <span class="onoffswitch-active"><span class="onoffswitch-switch">ON</span></span>
+                    <span class="onoffswitch-inactive"><span class="onoffswitch-switch">OFF</span></span>
+                </span>
+        </label>
+    </div>
+    <md-button ng-click="validateAndSaveData()" class="md-raised md-accent">Salveaz?</md-button>
+</md-bottom-sheet>

@@ -1,0 +1,125 @@
+<div class="date" ng-class="{ 'date-fixed-label': fixedLabel(),
+                                 'date-with-icon': icon && fixedLabel() }">
+
+    <div class="text-field-icon" ng-if="icon && fixedLabel() ">
+        <i class="mdi mdi-{{ icon }}"></i>
+    </div>
+
+    <!--- Date picker input --->
+    <md-input-container class="date-input" ng-click="openPicker()">
+        <label>{{label}}</label>
+        <input type="text" ng-model="selected.model" ng-disabled="true">
+    </md-input-container>
+</div>
+
+<script type="text/ng-template" id="popup.html">
+    <div class="date-picker">
+        <!-- Current day of week -->
+        <div class="date-picker-current-day-of-week">
+            <span>{{ moment(selected.date).format('dddd') }}</span>
+        </div>
+
+        <!-- Current date -->
+        <div class="date-picker-current-date">
+            <span ng-class="{ 'date-picker-white-text': yearSelection }">
+                {{ moment(selected.date).format('MMM') }}</span>
+            <strong ng-class="{ 'date-picker-white-text': yearSelection }">
+                {{moment(selected.date).format('DD') }}</strong>
+            <a ng-class="{ 'date-picker-white-text': yearSelection }"
+               ng-click="displayYearSelection()">
+                {{ moment(selected.date).format('YYYY') }}
+            </a>
+
+            <div layout="row" layout-align="center center">
+                <div layout="column" layout-align="center center">
+                    <md-button class="md-icon-button" ng-click="operateHours(1)" aria-label="Increment Hours">
+                        <md-icon md-svg-icon="chevron-up"></md-icon>
+                    </md-button>
+                    <md-input-container class="date-picker-hours-minutes-container">
+                        <input required
+                               min="10" max="19" step="1"
+                               aria-label="hours"
+                               ng-model="hours"
+                               class="date-picker-hours-minutes-inputs">
+                    </md-input-container>
+                    <md-button class="md-icon-button" ng-click="operateHours(-1)" aria-label="Decrement Hours">
+                        <md-icon md-svg-icon="chevron-down"></md-icon>
+                    </md-button>
+                </div>
+                <span>:</span>
+
+                <div layout="column" layout-align="center center">
+                    <md-button class="md-icon-button" ng-click="operateMinutes(1)" aria-label="Increment Hours">
+                        <md-icon md-svg-icon="chevron-up"></md-icon>
+                    </md-button>
+                    <md-input-container class="date-picker-hours-minutes-container">
+                        <input required
+                               aria-label="minutes"
+                               min="0" max="59" step="15"
+                               ng-model="minutes"
+                               class="date-picker-hours-minutes-inputs">
+                    </md-input-container>
+                    <md-button class="md-icon-button"
+                               ng-click="operateMinutes(-1)" aria-label="Decrement Hours">
+                        <md-icon md-svg-icon="chevron-down"></md-icon>
+                    </md-button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Calendar -->
+        <div class="date-picker-calendar" ng-if="!yearSelection">
+            <div layout="row" layout-align="space-between center">
+                <md-button class="md-icon-button" ng-click="previousMonth()" aria-label="prev">
+                    <md-icon md-svg-icon="chevron-left"></md-icon>
+                </md-button>
+                <h4>{{ activeDate.format('MMMM YYYY') }}</h4>
+                <md-button class="md-icon-button" ng-click="nextMonth()" aria-label="next">
+                    <md-icon md-svg-icon="chevron-right"></md-icon>
+                </md-button>
+            </div>
+
+            <md-grid-list md-cols="7" md-row-height="1:1" md-row-height="fit">
+                <md-grid-tile ng-repeat="day in daysOfWeek">
+                    <h5>{{ day }}</h5>
+                </md-grid-tile>
+            </md-grid-list>
+
+            <md-grid-list md-cols="7" md-row-height="1:1" md-row-height="fit">
+                <md-grid-tile ng-repeat="x in emptyFirstDays">
+                </md-grid-tile>
+                <md-grid-tile ng-repeat="day in days">
+                    <div class="date-picker-day"
+                         layout="row"
+                         layout-fill
+                         layout-align="center center"
+                         ng-class="{ 'date-picker-day-is-selected': day.selected, 'date-picker-day-is-today': day.today }">
+                        <a ng-click="select(day)">{{ day ? day.format('D') : '' }}</a>
+                    </div>
+                </md-grid-tile>
+                <md-grid-tile ng-repeat="x in emptyLastDays">
+                </md-grid-tile>
+            </md-grid-list>
+        </div>
+        <!-- Action button -->
+        <div layout="row" layout-fill layout-align="center center" ng-hide="yearSelection">
+            <md-button layout-margin layout-padding
+                       layout-fill
+                       ng-click="closePicker()" aria-label="ok">Ok
+            </md-button>
+        </div>
+
+        <!-- Year selection -->
+        <div class="date-picker-year-selector" ng-show="yearSelection">
+            <div ng-repeat="year in years">
+                <a class="date-picker-year"
+                   id="year-{{year}}"
+                   ng-class="{ 'date-picker-year-is-active': year == activeDate.format('YYYY'), 'anchor': year == activeDate.format('YYYY') }"
+                   ng-click="selectYear(year)"
+                   ng-if="yearSelection">
+                    <span>{{ year }}</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</script>

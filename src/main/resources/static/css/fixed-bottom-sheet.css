@@ -1,0 +1,9 @@
+md-fixed-bottom-sheet {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 70;
+    border-top: 1px solid;
+    background-color: rgb(139,195,74);
+}

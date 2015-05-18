@@ -1,0 +1,259 @@
+<md-progress-linear ng-show="loading" md-mode="indeterminate"></md-progress-linear>
+<md-content layout="column" flex layout-padding ng-show="!loading">
+    <md-subheader class="md-primary" i18n="_DefineProduct_" flex layout-padding></md-subheader>
+    <md-divider></md-divider>
+    <div class="md-actions" layout="row">
+        <div layout="row" layout-align="center center">
+            <div class="onoffswitch">
+                <input type="checkbox"
+                       name="onoffswitch"
+                       id="listableOnOffSwitch"
+                       class="onoffswitch-checkbox"
+                       aria-label="checkbox" ng-model="product.isListable">
+                <label class="onoffswitch-label" for="listableOnOffSwitch">
+                <span class="onoffswitch-inner">
+                    <span class="onoffswitch-active"><span class="onoffswitch-switch">{{localize.getLocalizedString('_Yes_')}}</span></span>
+                    <span class="onoffswitch-inactive"><span class="onoffswitch-switch">{{localize.getLocalizedString('_No_')}}</span></span>
+                </span>
+                </label>
+            </div>
+            <div layout-margin layout-padding>{{ product.isListable ? localize.getLocalizedString('_ProductIsDisplayed_') :
+                localize.getLocalizedString('_ProductIsNotDisplayed_')}}
+            </div>
+        </div>
+        <span flex></span>
+        <md-input-container>
+            <md-select ng-model="pricesCurrency">
+                <md-select-label>{{ localize.getLocalizedString('_PricesIn_') + pricesCurrency}}</md-select-label>
+                <md-option value="EUR">EUR</md-option>
+                <md-option value="RON">RON</md-option>
+            </md-select>
+        </md-input-container>
+    </div>
+    <form name="rawMaterialForm">
+        <md-input-container layout-margin>
+            <label i18n="_ProductName_"></label>
+            <input required ng-model="product.name"
+                   md-maxlength="254">
+        </md-input-container>
+        <md-input-container layout-margin>
+            <label i18n="_ProductDescription_"></label>
+            <textarea ng-model="product.description" columns="1" md-maxlength="254" contenteditable="true"></textarea>
+        </md-input-container>
+        <div layout layout-sm="column" layout-margin>
+            <md-input-container flex>
+                <label i18n="_ProductHeight_"></label>
+                <input required
+                       type="number" step="any"
+                       ng-model="product.extraData.height"
+                       ng-change="calculateRatios()">
+            </md-input-container>
+            <md-input-container flex>
+                <label i18n="_ProductWidth_"></label>
+                <input required
+                       type="number" step="any"
+                       ng-model="product.extraData.width"
+                       ng-change="calculateRatios()">
+            </md-input-container>
+        </div>
+        <div layout layout-sm="column" layout-margin ng-show="false">
+            <md-input-container flex>
+                <label i18n="_ProductLostRatio_"></label>
+                <input required
+                       type="number" step="any"
+                       ng-model="product.lostRatio"
+                       ng-change="calculateRatios()">
+            </md-input-container>
+        </div>
+        <div class="md-actions" layout="row">
+            <span flex></span>
+            <md-button ng-click="saveProduct()" class="md-primary" i18n="_Save_" aria-label="Save"></md-button>
+            <md-button ng-click="goToProductList()" class="md-primary md-warn" i18n="_Cancel_"
+                       aria-label="Cancel"></md-button>
+        </div>
+    </form>
+    <md-divider></md-divider>
+    <span class="md-primary md-subheader" i18n="_ProductSummary_" flex layout-padding></span>
+    <md-divider></md-divider>
+    <div layout="column">
+        <table class="md-table">
+            <thead>
+            <tr class="md-table-headers-row">
+                <th class="md-table-header">
+                    <span class="md-primary md-subheader">Denumire / Selector</span>
+                </th>
+                <th class="md-table-header">
+                    <span class="md-primary md-subheader">Cost producție</span>
+                </th>
+                <th class="md-table-header">
+                    <span class="md-primary md-subheader">Cost producție + costuri fixe</span>
+                </th>
+                <th class="md-table-header">
+                    <span class="md-primary md-subheader">Preț vânzare</span>
+                </th>
+                <th class="md-table-header">
+                    <span class="md-primary md-subheader">Adaos (%)</span>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="md-table-content-row" ng-if="totalFixedPrice > 0">
+                <td class="md-table-content">
+                    Costuri fixe
+                </td>
+                <td class="md-table-content">
+                    {{totalFixedPrice | number : decimals}} {{pricesCurrency}}
+                </td>
+                <td class="md-table-content">
+                    --
+                </td>
+                <td class="md-table-content">
+                    --
+                </td>
+                <td class="md-table-content">
+                    --
+                </td>
+            </tr>
+            <tr class="md-table-content-row" ng-repeat="rawMaterial in mainSelectorGroup.rawMaterials">
+                <td class="md-table-content">
+                    {{rawMaterial.name}}
+                </td>
+                <td class="md-table-content">
+                    {{getProductionPriceByRawMaterial(rawMaterial, false)}}
+                </td>
+                <td class="md-table-content">
+                    {{getSelectorAllProductionPrice(rawMaterial)}}
+                </td>
+                <td class="md-table-content">
+                    {{localize.getLocalizedString('_OutPrice_')}} : {{rawMaterial.sellingPrice[pricesCurrency]}}
+                    {{pricesCurrency}}
+                </td>
+                <td class="md-table-content">
+                    <md-toolbar ng-class="{'md-warn' : rawMaterial.hasLowAddition}">
+                        <span class="md-toolbar-tools">{{calculateAdditionForSellingPrice(rawMaterial)}}</span>
+                    </md-toolbar>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <md-divider></md-divider>
+    <md-subheader class="md-primary" i18n="_ProductContent_" flex layout-padding></md-subheader>
+    <md-divider></md-divider>
+    <!-- Trees -->
+    <div layout="row">
+        <!--Product Tree-->
+        <div ui-tree
+             id="product-tree-root"
+             flex="70" data-nodrag>
+            <ol ui-tree-nodes ng-model="productData">
+                <li ng-repeat="rawMaterialGroup in productData" ui-tree-node
+                    ng-include="'simple_product_renderer.html'"></li>
+            </ol>
+        </div>
+        <!--End Product Tree-->
+        <div flex="30" layout="column">
+            <md-card flex layout-fill>
+                <div flex layout-fill ng-hide="rawMaterialsGroups.length==0">
+                    <md-subheader class="md-primary" i18n="_RawMaterialGroups_" flex layout-padding></md-subheader>
+                    <md-divider></md-divider>
+                    <!--Materials Groups Tree-->
+                    <div ui-tree="rawMaterialsGroupsTreeCallbacks"
+                         id="raw-materials-groups-tree"
+                         data-empty-placeholder-enabled="false">
+                        <ol ui-tree-nodes="" ng-model="rawMaterialsGroups">
+                            <li ng-repeat="node in rawMaterialsGroups" ui-tree-node
+                                ng-include="'rawmaterialgroup_renderer.html'"></li>
+                        </ol>
+                    </div>
+                    <!--End Materials Groups Tree-->
+                </div>
+            </md-card>
+        </div>
+    </div>
+</md-content>
+<!--==============================================-->
+<!-- Simple nested node template (raw material groups - inside productData tree) -->
+<!--==============================================-->
+<script type="text/ng-template" id="simple_product_renderer.html">
+    <md-card layout="row" layout-align="start center" layout-fill>
+        <div layout="row" flex="80" layout-align="start center">
+            <md-icon-button id="expandButton"
+                            ng-click="toggleOpenNode(this)"
+                            aria-label="Toggle">
+                <md-icon ng-show="collapsed" md-svg-icon="arrow-down" class="md-primary"></md-icon>
+                <md-icon ng-show="!collapsed" md-svg-icon="arrow-up"></md-icon>
+            </md-icon-button>
+            <md-subheader flex layout-padding>
+                <!-- Icons for raw materials groups -->
+                <md-icon ng-if="rawMaterialGroup.isRequiredInEveryProduct"
+                         md-svg-icon="alert"></md-icon>
+                <md-icon ng-if="rawMaterialGroup.isSelector" md-svg-icon="bookmark-check"></md-icon>
+                {{::rawMaterialGroup.name}}
+            </md-subheader>
+        </div>
+        <div flex="20" layout="row" layout-align="end center">
+            <!-- Calculated FIXED price -->
+            <md-subheader ng-hide="this.$nodeScope || rawMaterialGroup.isSelector" flex>
+                {{calculateFixedTotalPricePerGroup(rawMaterialGroup)}}
+            </md-subheader>
+            <md-icon-button ng-hide="this.$nodeScope"
+                            ng-click="askQuestionThenRemove($event, this)"
+                            ng-if="!rawMaterialGroup.isRequiredInEveryProduct"
+                            aria-label="Delete">
+                <md-icon class="md-warn" md-svg-icon="delete"></md-icon>
+            </md-icon-button>
+        </div>
+    </md-card>
+    <!--data-nodrop-enabled - means that we cannot drop over 'child' elements-->
+    <ol ui-tree-nodes ng-model="rawMaterialGroup.rawMaterials" ng-show="!collapsed" data-nodrop-enabled>
+        <li ng-repeat="rawMaterial in rawMaterialGroup.rawMaterials" ui-tree-node
+            ng-include="'rawmaterial_renderer.html'"></li>
+    </ol>
+</script>
+<!--==============================================-->
+<!-- Simple nested node template (raw materials inside productData tree) -->
+<!--==============================================-->
+<script type="text/ng-template" id="rawmaterial_renderer.html">
+    <md-card layout="row" layout-align="start center" layout-fill>
+
+        <div layout="row" flex="40" layout-align="start center"
+             ng-attr-flex="{{rawMaterialGroup.isSelector ? 40 : 70}}">
+            <md-subheader flex layout-padding>
+                {{::rawMaterial.name}}
+            </md-subheader>
+        </div>
+        <div flex="30">
+            <md-subheader>
+                {{rawMaterial.pricePerProductionUnit * product.ratio | number : decimals}} {{pricesCurrency}}
+            </md-subheader>
+        </div>
+        <div flex="30" ng-if="rawMaterialGroup.isSelector">
+            <md-input-container>
+                <label>{{localize.getLocalizedString('_OutPrice_')}} {{pricesCurrency}}</label>
+                <input required
+                       ng-model="rawMaterial.sellingPrice[pricesCurrency]"
+                       ng-focus="onSelectorPriceIsAboutToChange(rawMaterial)"
+                       ng-blur="onSelectorPriceChanged(rawMaterial)"
+                       type="number" step="any">
+            </md-input-container>
+        </div>
+    </md-card>
+</script>
+<!--==============================================-->
+<!-- Raw Material Groups Renderer (inside raw materials tree) -->
+<!--==============================================-->
+<script type="text/ng-template" id="rawmaterialgroup_renderer.html">
+    <md-card ui-tree-handle class="tree-node tree-node-content" layout="row" layout-align="start center">
+        <div class="tree-handle">
+            <md-icon ng-if="node.isRequiredInEveryProduct" md-svg-icon="alert"></md-icon>
+            <md-icon ng-if="node.isSelector" md-svg-icon="bookmark-check"></md-icon>
+        </div>
+        <span flex>{{::node.name}}</span>
+    </md-card>
+
+    <ol ui-tree-nodes ng-model="node.rawMaterials" data-nodrag>
+        <li ng-repeat="node in node.rawMaterials" ui-tree-node ng-include="'rawmaterialgroup_renderer.html'">
+        </li>
+    </ol>
+</script>

@@ -1,0 +1,17 @@
+<md-content role="navigation">
+    <ul class="left-menu">
+        <li ng-repeat="section in menu.sections"
+            class="parent-list-item"
+            ng-class="{'parentActive' : isSectionSelected(section)}">
+            <menu-link section="section" ng-if="!section.type"></menu-link>
+            <menu-toggle section="section" ng-if="section.type === 'toggle'"></menu-toggle>
+
+            <ul ng-if="section.pages.length > 0" class="menu-nested-list">
+                <li ng-repeat="child in section.pages"
+                    ng-class="{'childActive' : isSectionSelected(child)}">
+
+                </li>
+            </ul>
+        </li>
+    </ul>
+</md-content>

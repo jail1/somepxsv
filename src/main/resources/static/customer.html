@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js" ng-app="photoX">
+<head>
+    <title>Agency</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no"/>
+
+    <!--LumX-->
+    <!--
+    <link rel="stylesheet" href="./css/lumx.css">
+    -->
+    <!-- Angulars Material CSS using RawGit to load directly from `bower-material/master` -->
+    <link rel="stylesheet" href="./css/angular-material.min.css">
+    <!--
+    <link rel="stylesheet" href="./css/app.css">
+    -->
+    <!--Calendar-->
+    <!--
+    <link rel="stylesheet" href="./css/angular-bootstrap-calendar.css">
+    -->
+    <link rel="stylesheet" href="./css/app.css">
+
+    <!-- Sockets -->
+    <script src="./js/vendor/sockjs-0.3.4.js"></script>
+    <script src="./js/vendor/stomp.js"></script>
+
+    <!-- Underscore -->
+    <script src="./js/vendor/underscore-min.js"></script>
+    <!-- Moment JS -->
+    <script src="./js/vendor/moment-with-locales.min.js"></script>
+    <!-- Angular Material Dependencies -->
+    <!--<script src="./js/vendor/angular.min.js"></script>-->
+    <script src="./js/vendor_src/angular.js"></script>
+    <script src="./js/vendor/angular-animate.min.js"></script>
+    <script src="./js/vendor/angular-aria.min.js"></script>
+    <script src="./js/vendor/angular-material.min.js"></script>
+    <!-- Locales -->
+    <script src="./js/i18n/angular-locale_ro.js"></script>
+    <!-- Router -->
+    <script src="./js/vendor/angular-ui-router.min.js"></script>
+    <!-- Directives -->
+    <!--
+    <script src="./js/directives/angular-summernote.js"></script>
+    -->
+    <script src="./js/directives/ng-underscore.js"></script>
+    <script src="./js/directives/calendar-with-tpls.js"></script>
+    <script src="./js/directives/date-picker_directive.js"></script>
+    <script src="./js/directives/dropzone.js"></script>
+    <script src="./js/directives/ensure_unique.js"></script>
+    <script src="./js/directives/i18n.js"></script>
+    <script src="./js/directives/md-table.js"></script>
+    <script src="./js/directives/pagination.js"></script>
+    <script src="./js/directives/progressbar.js"></script>
+    <script src="./js/directives/tmhDynamicLocale.js"></script>
+    <script src="./js/directives/toggle-switch.js"></script>
+    <script src="./js/directives/ng-panel.js"></script>
+    <script src="./js/directives/menu.js"></script>
+    <!-- Application Specific -->
+    <script src="./js/apps/photoxApp.js"></script>
+
+    <script src="./js/services/usersService.js"></script>
+    <script src="./js/controllers/userProfileController.js"></script>
+    <script src="./js/controllers/menuController.js"></script>
+    <script src="./js/controllers/agency/agencyAppController.js"></script>
+    <script src="./js/controllers/agency/agencyDashboardController.js"></script>
+</head>
+
+<body layout="column" ng-controller="MainCtrl">
+<md-toolbar layout="row">
+    <button ng-click="toggleSidenav('left')" hide-gt-sm class="menuBtn">
+        <span class="visually-hidden">Menu</span>
+    </button>
+    <div layout-fill data-ng-include=" 'views/agency/agency_header.html' "></div>
+</md-toolbar>
+<div layout="row" flex>
+    <md-sidenav layout="column"
+                style="background-color: #00BCD4" layout-fill
+                class="md-sidenav-left md-whiteframe-z2"
+                md-component-id="left"
+                md-is-locked-open="$mdMedia('gt-sm')">
+        <div data-ng-include=" 'views/agency/agency_sidebar.html' "></div>
+    </md-sidenav>
+    <div layout="column" flex id="content">
+        <md-content layout="column" flex class="md-padding">
+
+            <md-select ng-model="user" md-on-open="loadUsers()" style="min-width: 200px;">
+                <md-select-label>{{ user ? user.name : 'Assign to user' }}</md-select-label>
+                <md-option ng-value="user" ng-repeat="user in users">{{user.name}}</md-option>
+            </md-select>
+            <div ng-panel="layoutDemo">Blah</div>
+            <div ui-view></div>
+        </md-content>
+    </div>
+</div>
+</body>
+</html>

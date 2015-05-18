@@ -1,0 +1,260 @@
+[
+  {
+    "route":"dashboard",
+    "name": {
+      "key": "dashboard",
+      "en_US": "Dashboard",
+      "ro_RO": "Pagina principală"
+    },
+    "url": "\/dashboard",
+    "templateUrl": "\/views\/admin\/admin_dashboard.html",
+    "controller": "adminDashboardCtrl"
+  },
+  {
+    "route":"materials",
+    "name": {
+      "key": "materials",
+      "en_US": "Materials and products",
+      "ro_RO": "Materiale si produse"
+    },
+    "type": "toggle",
+    "url" : "\/materials",
+    "abstract" : "true",
+    "pages": [
+      {
+        "route":"materials.products",
+        "name": {
+          "key": "materials.products",
+          "en_US": "Products list",
+          "ro_RO": "Listă produse"
+        },
+        "url": "\/products",
+        "templateUrl": "\/views\/admin\/admin_products_list.html",
+        "controller": "adminProductsCtrl"
+      },
+      {
+        "route":"materials.addOrEditSimpleProduct",
+        "name": {
+          "key": "materials.addOrEditSimpleProduct",
+          "en_US": "Define product",
+          "ro_RO": "Definire produs"
+        },
+        "url": "\/:productId",
+        "templateUrl": "\/views\/admin\/admin_define_simple_product.html",
+        "controller": "adminAddOrEditSimpleProductCtrl",
+        "displayed" : "no"
+      },
+      {
+        "route":"materials.addOrEditComposedProduct",
+        "name": {
+          "key": "materials.addOrEditComposedProduct",
+          "en_US": "Define composed product",
+          "ro_RO": "Definire produs compus"
+        },
+        "url": "\/composed/:productId",
+        "templateUrl": "\/views\/admin\/admin_define_composed_product.html",
+        "controller": "adminAddOrEditComposedProductCtrl",
+        "displayed" : "no"
+      },
+      {
+        "route":"materials.raw",
+        "name": {
+          "key": "materials.raw",
+          "en_US": "Raw materials",
+          "ro_RO": "Materii prime"
+        },
+        "url": "\/rawmaterials",
+        "templateUrl": "\/views\/admin\/admin_raw_products.html",
+        "controller": "adminRawProductsController"
+      }
+    ]
+  },
+  {
+    "route":"clients",
+    "name": {
+      "key": "clients",
+      "en_US": "Clients",
+      "ro_RO": "Clienți"
+    },
+    "type": "toggle",
+    "url" : "\/clients",
+    "abstract" : "true",
+    "pages": [
+      {
+        "route":"clients.list",
+        "name": {
+          "key": "clients.list",
+          "en_US": "Clients list",
+          "ro_RO": "Listă clienți"
+        },
+        "url": "\/list",
+        "templateUrl": "\/views\/clients_list.html",
+        "controller": "clientsListController"
+      },
+      {
+        "route":"clients.add",
+        "name": {
+          "key": "clients.add",
+          "en_US": "Clients add",
+          "ro_RO": "Adaugă client"
+        },
+        "url": "\/add",
+        "templateUrl": "\/views\/admin\/admin_add_user.html",
+        "controller": "adminAddClientsCtrl",
+        "displayed" : "no"
+      },
+      {
+        "route":"clients.edit",
+        "name": {
+          "key": "clients.edit",
+          "en_US": "Clients edit",
+          "ro_RO": "Editează client"
+        },
+        "url": "\/edit/:userId",
+        "templateUrl": "\/views\/admin\/admin_add_user.html",
+        "controller": "adminAddClientsCtrl",
+        "displayed" : "no"
+      }
+    ]
+  },
+  {
+    "route":"files",
+    "name": {
+      "key": "files",
+      "en_US": "Dashboard",
+      "ro_RO": "Fișiere"
+    },
+    "type": "toggle",
+    "url" : "\/files",
+    "abstract" : "true",
+    "displayed" : "no",
+    "pages": [
+      {
+        "route":"files.list",
+        "name": {
+          "key": "files.list",
+          "en_US": "Dashboard",
+          "ro_RO": "Listă fișiere"
+        },
+        "url": "\/list",
+        "templateUrl": "\/views\/admin\/admin_dashboard.html",
+        "controller": "adminDashboardCtrl"
+      },
+      {
+        "route":"files.list2",
+        "name": {
+          "key": "files.list2",
+          "en_US": "Dashboard",
+          "ro_RO": "Listă fișiere 2"
+        },
+        "url": "\/list2",
+        "templateUrl": "\/views\/admin\/admin_dashboard.html",
+        "controller": "adminDashboardCtrl"
+      },
+      {
+        "route":"files.list3",
+        "name": {
+          "key": "files.list3",
+          "en_US": "Dashboard",
+          "ro_RO": "Listă fișiere 3"
+        },
+        "url": "\/list3",
+        "templateUrl": "\/views\/admin\/admin_dashboard.html",
+        "controller": "adminDashboardCtrl"
+      },
+      {
+        "route":"files.list4",
+        "name": {
+          "key": "files.list4",
+          "en_US": "Dashboard",
+          "ro_RO": "Ultima listă de fișiere"
+        },
+        "url": "\/list4",
+        "templateUrl": "\/views\/admin\/admin_dashboard.html",
+        "controller": "adminDashboardCtrl"
+      }
+    ]
+  },
+  {
+    "route":"messages",
+    "name": {
+      "key": "messages",
+      "en_US": "Dashboard",
+      "ro_RO": "Mesagerie"
+    },
+    "type": "toggle",
+    "url" : "\/messages",
+    "abstract" : "true",
+    "displayed" : "no",
+    "pages": [
+      {
+        "route":"messages.one",
+        "name": {
+          "key": "messages.one",
+          "en_US": "Dashboard",
+          "ro_RO": "Listă mesaje"
+        },
+        "url": "\/one",
+        "templateUrl": "views\/admin\/admin_m1.html",
+        "controller": "adminDashboardCtrl"
+      },
+      {
+        "route":"messages.two",
+        "name": {
+          "key": "messages.two",
+          "en_US": "Dashboard",
+          "ro_RO": "Mesaje primite"
+        },
+        "url": "\/two",
+        "templateUrl": "views\/admin\/admin_m2.html",
+        "controller": "adminDashboardCtrl"
+      },
+      {
+        "route":"messages.three",
+        "name": {
+          "key": "messages.three",
+          "en_US": "Dashboard",
+          "ro_RO": "Mesaje trimise"
+        },
+        "url": "\/three",
+        "templateUrl": "views\/admin\/admin_m3.html",
+        "controller": "adminDashboardCtrl"
+      },
+      {
+        "route":"messages.four",
+        "name": {
+          "key": "messages.four",
+          "en_US": "Dashboard",
+          "ro_RO": "Notificări"
+        },
+        "url": "\/four",
+        "templateUrl": "views\/admin\/admin_m4.html",
+        "controller": "adminDashboardCtrl"
+      }
+    ]
+  },
+  {
+    "route":"stats",
+    "name": {
+      "key": "stats",
+      "en_US": "Dashboard",
+      "ro_RO": "Statistici"
+    },
+    "url": "\/stats",
+    "templateUrl": "views\/admin\/admin_stats.html",
+    "controller": "adminAddClientsCtrl",
+    "displayed" : "no"
+  },
+  {
+    "route":"others",
+    "name": {
+      "key": "others",
+      "en_US": "Dashboard",
+      "ro_RO": "Altele"
+    },
+    "url": "\/others",
+    "templateUrl": "views\/admin\/admin_others.html",
+    "controller": "adminAddInvoiceCtrl",
+    "displayed" : "no"
+  }
+]

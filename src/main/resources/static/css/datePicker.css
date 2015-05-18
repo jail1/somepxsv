@@ -1,0 +1,175 @@
+.date {
+    position: relative
+}
+
+.date-fixed-label .text-field {
+    padding-top: 8px
+}
+
+.date-fixed-label .text-field-is-active .text-field-label {
+    display: none
+}
+
+.date-fixed-label .text-field-label {
+    -webkit-transform: none;
+    -moz-transform: none;
+    -ms-transform: none;
+    -o-transform: none;
+    transform: none
+}
+
+.date-with-icon {
+    margin-left: 64px
+}
+
+.date-input, .date-input input {
+    cursor: pointer !important
+}
+
+.date-picker {
+    position: fixed;
+    top: 48px;
+    left: 50%;
+    z-index: 1000;
+    width: 280px;
+    margin-left: -140px;
+    background-color: #FFF;
+    box-shadow: 0 9px 18px rgba(0, 0, 0, .5);
+}
+
+.date-picker-hours-minutes-inputs {
+    text-align: center;
+    max-width: 30px;
+    font-size: 1.5rem;
+}
+
+.date-picker-hours-minutes-container {
+    margin-bottom: -30px;
+}
+
+.date-picker-current-day-of-week {
+    background-color: #00796B
+}
+
+.date-picker-current-day-of-week span {
+    display: block;
+    font-size: 14px;
+    font-size: .875rem;
+    color: #FFF;
+    line-height: 32px;
+    text-align: center;
+    text-transform: capitalize
+}
+
+.date-picker-current-date {
+    padding: 8px 0;
+    background-color: #009688
+}
+
+.date-picker-current-date a, .date-picker-current-date span, .date-picker-current-date strong {
+    display: block;
+    font-weight: 400;
+    text-align: center
+}
+
+.date-picker-current-date a, .date-picker-current-date span {
+    font-size: 24px;
+    font-size: 1.5rem;
+    line-height: 32px
+}
+
+.date-picker-current-date span {
+    text-transform: uppercase
+}
+
+.date-picker-current-date strong {
+    font-size: 60px;
+    font-size: 3.75rem;
+    line-height: 1
+}
+
+.date-picker-current-date a {
+    cursor: pointer;
+    font-style: normal
+}
+
+.date-picker-day {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.date-picker-day a {
+    display: block;
+    height: 32px;
+    width: 32px;
+    margin: 0 auto;
+    border-radius: 50%;
+    font-size: 12px;
+    font-size: .75rem;
+    font-weight: 400;
+    line-height: 32px;
+    text-align: center
+}
+
+.date-picker-day-is-today a {
+    font-weight: 500;
+    color: #00796B
+}
+
+.date-picker-day a:hover, .date-picker-day-is-selected a {
+    cursor: pointer;
+    background-color: #009688;
+    color: #FFF;
+}
+
+.date-picker-white-text {
+    color: #FFF;
+}
+
+/** **/
+.date-picker-year-selector {
+    position: relative;
+    -webkit-overflow-scrolling: touch;
+    display: block;
+    overflow: auto;
+}
+
+.date-picker-year-selector[md-scroll-y] {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.date-picker-year-selector[md-scroll-x] {
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.date-picker-year-selector.autoScroll {
+    -webkit-overflow-scrolling: auto;
+}
+
+.date-picker-year {
+    display: block;
+    cursor: pointer
+}
+
+.date-picker-year span {
+    display: block;
+    height: 65px;
+    width: 65px;
+    margin: 0 auto;
+    border-radius: 50%;
+    font-size: 16px;
+    font-size: 1rem;
+    line-height: 65px;
+    text-align: center
+}
+
+.date-picker-year:hover span {
+    color: #00796B
+}
+
+.date-picker-year-is-active span {
+    background-color: #009688;
+    color: #FFF !important
+}

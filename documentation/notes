@@ -1,0 +1,19 @@
+//array splice - underscore way
+_(arr).groupBy(function(a, b) {
+  return ~~(b / chunk);
+});
+//pluck usage
+var Tuts = [{name : 'NetTuts', niche : 'Web Development'}, {name : 'WPTuts', niche : 'WordPress'}, {name : 'PSDTuts', niche : 'PhotoShop'}, {name : 'AeTuts', niche : 'After Effects'}];
+var niches = _.pluck(Tuts, 'niche'); 
+console.log(niches); 
+outputs > ["Web Development", "WordPress", "PhotoShop", "After Effects"]
+//keys and values
+var Tuts = { NetTuts : 'Web Development',  WPTuts : 'WordPress',  PSDTuts : 'PhotoShop', AeTuts : 'After Effects'};
+var keys = _.keys(Tuts), values = _.values(Tuts); 
+console.log(keys + values); 
+outputs > NetTuts,WPTuts,PSDTuts,AeTutsWeb Development,WordPress,PhotoShop,After Effects
+//templating 
+var data =   {site: 'NetTuts'}, template =   'Welcome! You are at <%= site %>'; 
+var parsedTemplate = _.template(template,  data ); 
+console.log(parsedTemplate); 
+outputs >  Welcome! You are at NetTuts

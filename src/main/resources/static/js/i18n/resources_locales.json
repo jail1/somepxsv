@@ -1,0 +1,377 @@
+[
+  {
+    "key": "_Logout_",
+    "en_US": "Logout",
+    "ro_RO": "Iesire"
+  },
+  {
+    "key": "_SwitchLanguage_",
+    "en_US": "RO",
+    "ro_RO": "EN"
+  },
+  {
+    "key": "_Dashboard_",
+    "en_US": "Dashboard",
+    "ro_RO": "Prima pagina"
+  },
+  {
+    "key": "_Events_",
+    "en_US": "Events",
+    "ro_RO": "Eveniment"
+  },
+  {
+    "key": "_Events_._Detail_",
+    "en_US": "Event detail",
+    "ro_RO": "Detalii eveniment"
+  },
+  {
+    "key": "_Users_",
+    "en_US": "Users",
+    "ro_RO": "Utilizatori"
+  },
+  {
+    "key": "_Type_",
+    "en_US": "Type",
+    "ro_RO": "Tip"
+  },
+  {
+    "key": "_Error_",
+    "en_US": "Error!",
+    "ro_RO": "Eroare!"
+  },
+  {
+    "key": "_Errors_",
+    "en_US": "Please correct your errors!",
+    "ro_RO": "Vă rugăm corectați erorile!"
+  },
+  {
+    "key": "_Attention_",
+    "en_US": "Attention!",
+    "ro_RO": "Atentie!"
+  },
+  {
+    "key": "_Success_",
+    "en_US": "Success!",
+    "ro_RO": "Informatia a fost salvata!"
+  },
+  {
+    "key": "_Yes_",
+    "en_US": "Yes",
+    "ro_RO": "Da"
+  },
+  {
+    "key": "_No_",
+    "en_US": "No",
+    "ro_RO": "Nu"
+  },
+  {
+    "key": "_Save_",
+    "en_US": "Save",
+    "ro_RO": "Salveaza"
+  },
+  {
+    "key": "_Cancel_",
+    "en_US": "Cancel",
+    "ro_RO": "Renunta"
+  },
+  {
+    "key": "_Delete_",
+    "en_US": "Delete",
+    "ro_RO": "Șterge"
+  },
+  {
+    "key": "_DeleteQuestion_",
+    "en_US": "Are you sure you want to delete {0} {1}?",
+    "ro_RO": "stergeţi {0} {1}. Sunteţi sigur ca doriţi acest lucru?"
+  },
+  {
+    "key": "_MoveQuestion_",
+    "en_US": "Are you sure you want to move {0} in {1}?",
+    "ro_RO": "Mutati {0} în {1}. Sunteţi sigur ca doriţi acest lucru?"
+  },
+  {
+    "key": "_Search_",
+    "en_US": "Search",
+    "ro_RO": "Cauta..."
+  },
+  {
+    "key": "_AddUsers_",
+    "en_US": "Add Users",
+    "ro_RO": "Adaugare utilizator"
+  },
+  {
+    "key": "_Add_",
+    "en_US": "Add",
+    "ro_RO": "Adauga"
+  },
+  {
+    "key": "_Email_",
+    "en_US": "e-mail",
+    "ro_RO": "e-mail"
+  },
+  {
+    "key": "_FirstName_",
+    "en_US": "Firstname",
+    "ro_RO": "Prenume"
+  },
+  {
+    "key": "_LastName_",
+    "en_US": "Lastname",
+    "ro_RO": "Nume"
+  },
+  {
+    "key": "_Password_",
+    "en_US": "Password",
+    "ro_RO": "Parola"
+  },
+  {
+    "key": "_PasswordAgain_",
+    "en_US": "Password again",
+    "ro_RO": "Parola, din nou"
+  },
+  {
+    "key": "_PasswordsNoMatch_",
+    "en_US": "Passwords do NOT match!",
+    "ro_RO": "Parola nu este aceeași în cele două câmpuri!"
+  },
+  {
+    "key": "_lastSeen_",
+    "en_US": "Last login",
+    "ro_RO": "Ultima logare"
+  },
+  {
+    "key": "_Role_",
+    "en_US": "Role",
+    "ro_RO": "Rol"
+  },
+  {
+    "key": "_Never_",
+    "en_US": "Never",
+    "ro_RO": "Niciodata"
+  },
+  {
+    "key": "_AccDisabled_",
+    "en_US": "Disabled (user won't be able to login)",
+    "ro_RO": "Cont inactiv (utilizatorul trebuie sa confirme activarea contului)!"
+  },
+  {
+    "key": "_AccEnabler_",
+    "en_US": "Enable",
+    "ro_RO": "Activeaza"
+  },
+  {
+    "key": "_NotSet_",
+    "en_US": "Not set",
+    "ro_RO": "Fara nume"
+  },
+  {
+    "key": "_Admin_",
+    "en_US": "Admin",
+    "ro_RO": "Admin"
+  },
+  {
+    "key": "_Photographer_",
+    "en_US": "Photographer",
+    "ro_RO": "Fotograf"
+  },
+  {
+    "key": "_Client_",
+    "en_US": "Client",
+    "ro_RO": "Client"
+  },
+  {
+    "key": "_You_",
+    "en_US": " (you)",
+    "ro_RO": " (dvs)"
+  },
+  {
+    "key": "_Mobile_",
+    "en_US": "Mobile",
+    "ro_RO": "Telefon"
+  },
+  {
+    "key": "_LoginName_",
+    "en_US": "Login name",
+    "ro_RO": "Nume utilizator"
+  },
+  {
+    "key": "_EmailExists_",
+    "en_US": "E-mail address already registered.",
+    "ro_RO": "Adresa de e-mail exista în baza de date!"
+  },
+  {
+    "key": "_LoginExists_",
+    "en_US": "Login name address already registered.",
+    "ro_RO": "Numele de utilizator exista în baza de date!"
+  },
+  {
+    "key": "_NotEmail_",
+    "en_US": "That is not a valid e-mail address",
+    "ro_RO": "Nu ati scris corect adresa de e-mail. Adresa de e-mail indicata nu este valida!"
+  },
+  {
+    "key": "_SavedUser_",
+    "en_US": "User created. Email send. Continue or hit 'ok'",
+    "ro_RO": "Contul a fost creat, e-mail-ul cu instructiuni a fost trimis. Continuati adaugarea sau apasati OK."
+  },
+  {
+    "key": "_CreatedOn_",
+    "en_US": "Created on",
+    "ro_RO": "Data crearii"
+  },
+  {
+    "key": "_Language_",
+    "en_US": "Language",
+    "ro_RO": "Limba"
+  },
+  {
+    "key": "_Name_",
+    "en_US": "Name {0}",
+    "ro_RO": "Nume {0}"
+  },
+  {
+    "key": "_Description_",
+    "en_US": "Description {0}",
+    "ro_RO": "Descriere {0}"
+  },
+  {
+    "key": "_Instructions_",
+    "en_US": "Instructions {0}",
+    "ro_RO": "Instructiuni {0}"
+  },
+  {
+    "key": "_StartDate_",
+    "en_US": "Start Date {0}",
+    "ro_RO": "Data început {0}"
+  },
+  {
+    "key": "_ExpireDate_",
+    "en_US": "Expire Date {0}",
+    "ro_RO": "Data expirarii {0}"
+  },
+  {
+    "key": "_PleaseSelect_",
+    "en_US": "Please select",
+    "ro_RO": "Selectati"
+  },
+  {
+    "key": "_SelectParent_",
+    "en_US": "Please select parent user",
+    "ro_RO": "Selectati utilizatorul parinte"
+  },
+  {
+    "key": "_Selected_",
+    "en_US": " selected.",
+    "ro_RO": " selectate."
+  },
+  {
+    "key": "_Remaining_",
+    "en_US": " unselected remaining.",
+    "ro_RO": " ramase neselecate."
+  },
+  {
+    "key": "_True_",
+    "en_US": "True",
+    "ro_RO": "Adevarat"
+  },
+  {
+    "key": "_False_",
+    "en_US": "False",
+    "ro_RO": "Fals"
+  },
+  {
+    "key": "_Loading_",
+    "en_US": "Loading ... ",
+    "ro_RO": "Se încarca..."
+  },
+  {
+    "key": "_PleaseWaitLoading_",
+    "en_US": "Please wait, loading!",
+    "ro_RO": "Va rugam, asteptati, se încarca!"
+  },
+  {
+    "key": "_Details_",
+    "en_US": "Details",
+    "ro_RO": "Detalii"
+  },
+  {
+    "key": "_Close_",
+    "en_US": "Close",
+    "ro_RO": "Închide"
+  },
+  {
+    "key": "_Today_",
+    "en_US": "Today",
+    "ro_RO": "Astazi"
+  },
+  {
+    "key": "_Clear_",
+    "en_US": "Clear",
+    "ro_RO": "sterge"
+  },
+  {
+    "key": "_Anytime_",
+    "en_US": "Anytime",
+    "ro_RO": "Oricând"
+  },
+  {
+    "key": "_Help_",
+    "en_US": "Help",
+    "ro_RO": "Ajutor"
+  },
+  {
+    "key": "_Next_",
+    "en_US": "Next",
+    "ro_RO": "Urmatorul"
+  },
+  {
+    "key": "_Date_",
+    "en_US": "Date",
+    "ro_RO": "Data"
+  },
+  {
+    "key": "_Time_",
+    "en_US": "Time",
+    "ro_RO": "Ora"
+  },
+  {
+    "key": "_Calendar_",
+    "en_US": "Calendar",
+    "ro_RO": "Evenimente"
+  },
+  {
+    "key": "_Profile_",
+    "en_US": "Profile",
+    "ro_RO": "Profil"
+  },
+  {
+    "key": "profile",
+    "en_US": "Profile",
+    "ro_RO": "Profilul dvs"
+  },
+  {
+    "key": "_YourData_",
+    "en_US": "Your Profile",
+    "ro_RO": "Profilul dvs"
+  },
+  {
+    "key": "_YourClients_",
+    "en_US": "Your Clients",
+    "ro_RO": "Clientii dvs"
+  },
+  {
+    "key": "_Products_",
+    "en_US": "Your Products",
+    "ro_RO": "Produse"
+  },
+  {
+    "key": "_InvalidPassword_",
+    "en_US": "Invalid password : should be 8-40 characters long, have one digit, have one lower case, have one uppercase, have one of the [ @ # $ % ! . ] characters",
+    "ro_RO": "Parola este incorectă : ar trebui să aibă minim 8 caractere, dintre care o cifră, o literă mică, o literă mare și unul dintre caracterele [ @ # $ % ! . ]"
+  },
+  {
+    "key": "_InvalidUsername_",
+    "en_US": "Invalid username : should be an email address!",
+    "ro_RO": "Adresa de email nu este validă"
+  }
+]

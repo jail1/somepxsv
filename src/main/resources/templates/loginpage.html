@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<title>Login</title>
+
+<link rel="stylesheet" href="./css/font-awesome.min.css"></link>
+<link rel="stylesheet" href="./css/angular-material.min.css"></link>
+<link rel="stylesheet" href="./css/login.css"></link>
+
+<script src="./js/vendor/angular.min.js"></script>
+<script src="./js/vendor/angular-animate.min.js"></script>
+<script src="./js/vendor/angular-aria.min.js"></script>
+<script src="./js/vendor/angular-material.min.js"></script>
+
+<script src="./js/apps/loginApp.js"></script>
+</head>
+
+
+<body ng-app="loginApp" ng-controller="LoginController">
+	<div class="body" ng-show="loginSubmitted">
+		<span> <span></span> <span></span> <span></span> <span></span>
+		</span>
+		<div class="base">
+			<span></span>
+			<div class="face"></div>
+		</div>
+	</div>
+	<div class="longfazers" ng-show="loginSubmitted">
+		<span></span> <span></span> <span></span> <span></span>
+	</div>
+	<h1 ng-show="loginSubmitted">Redirecting...</h1>
+
+	<div class="whole-page" layout="column" layout-align="center center">
+		<div layout="column" layout-align="center center">
+
+			<div class="main-body" ng-show="!loginSubmitted">
+				<div class="container">
+					<div layout="column">
+
+
+						<form name="loginForm" role="form" method="post"
+							th:action="@{/login}" onsubmit="return false">
+							<fieldset>
+								<div layout="column">
+
+									<label th:if="${param.error}">Bad credentials</label> <label
+										th:if="${param.logout}" th:text="${param.logout}"></label>
+
+								</div>
+								<div layout="row">
+									<md-icon md-svg-src="./images/icons/account.svg"
+										aria-hidden="true"> <svg
+										xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+										viewBox="0 0 24 24" fit="" preserveaspectratio="xMidYMid meet"
+										viewbox="0 0 24 24"
+										style="pointer-events: none; display: block;">
+									<path
+											d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z">
+										</path>
+										</svg> </md-icon>
+									<md-input-container md-no-float=""> <label>Username:</label>
+									<input required="" name="photox_username" type="text"
+										placeholder="Username"></input> </md-input-container>
+								</div>
+
+								<div layout="row">
+									<md-icon md-svg-src="./images/icons/lock.svg"
+										aria-hidden="true"> <svg
+										xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"
+										viewBox="0 0 24 24" fit="" preserveaspectratio="xMidYMid meet"
+										viewbox="0 0 24 24"
+										style="pointer-events: none; display: block;">
+									<path
+											d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z">
+										</path>
+										</svg> </md-icon>
+									<md-input-container md-no-float=""> <label>Password:</label>
+									<input required="" name="photox_password" type="password"
+										placeholder="Password"></input> </md-input-container>
+								</div>
+
+								<div layout="row" layout-align="center center">
+									<md-button class="md-primary md-raised"
+										ng-click="loginSubmit()" layout-fill="" aria-label="sign in">
+									<span>Login</span> </md-button>
+								</div>
+							</fieldset>
+						</form>
+
+						<section layout="row" layout-align="center center"
+							layout-margin="" layout-padding="">
+							<div layout-margin="" layout-padding="">
+								<md-button class="md-raised md-twitter" aria-label="twitter">
+								<i class="fa fa-twitter"></i> </md-button>
+							</div>
+							<div layout-margin="" layout-padding="">
+								<md-button class="md-raised md-facebook" aria-label="facebook">
+								<i class="fa fa-facebook"></i> </md-button>
+							</div>
+							<div layout-margin="" layout-padding="">
+								<md-button class="md-raised md-gplus" aria-label="google plus">
+								<i class="fa fa-google"></i> </md-button>
+							</div>
+						</section>
+
+						<section layout-margin="" layout-padding="">
+							<div layout="row">
+								<md-button class="md-primary md-raised" ng-transclude=""
+									layout-fill=""> <span>Forgot Password</span> </md-button>
+
+							</div>
+						</section>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

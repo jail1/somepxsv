@@ -1,0 +1,134 @@
+<md-progress-linear ng-show="loading" md-mode="indeterminate"></md-progress-linear>
+<md-content layout="column" flex class="md-padding">
+    <md-subheader class="md-primary" i18n="_AddUsers_"></md-subheader>
+    <md-divider></md-divider>
+    <div ng-form="newUserForm">
+        <!-- DISABLED - WILL USE DRAG AND DROP TO REARRANGE ACCOUNTS -->
+        <div layout layout-sm="column" ng-if="false">
+            <md-input-container flex>
+                <md-select ng-model="parentuser" md-on-open="loadUsers()" aria-label="Select parent user">
+                    <md-select-label>{{ parentuser ? (+ parentuser.firstName + " " + parentuser.lastName + " - " +
+                        parentuser.username ) : localize.getLocalizedString('_SelectParent_') }}
+                    </md-select-label>
+                    <md-option ng-value="user" ng-repeat="user in users">{{user.username}}</md-option>
+                </md-select>
+                <p class="md-caption"> {{localize.getLocalizedString('_ParentUser_')}} : {{ parentuser ?
+                    parentuser.username
+                    : localize.getLocalizedString('_NoOne_') }}</p>
+            </md-input-container>
+        </div>
+        <div layout layout-sm="column">
+            <md-input-container flex>
+                <label i18n="_Email_"></label>
+                <input required ng-model="user.username"
+                       ng-model-options="{ updateOn: 'blur' }"
+                       uniqueness-checker="/private/API/v1/emailCheck"
+                       name="newUserEmail"
+                       data-i18n="_Email_|placeholder">
+                <div ng-messages="newUserForm.newUserEmail.$error">
+                    <div ng-if="newUserForm.newUserEmail.$error.loading" ng-message="loading" i18n="_PleaseWaitLoading_"></div>
+                    <div ng-if="newUserForm.newUserEmail.$error.unavailable" ng-message="unavailable" i18n="_EmailExists_"></div>
+                </div>
+            </md-input-container>
+            <md-input-container flex>
+                <label i18n="_LoginName_"></label>
+                <input required
+                       uniqueness-checker="/private/API/v1/loginnameCheck"
+                       ng-model="user.loginName"
+                       ng-model-options="{ updateOn: 'blur' }"
+                       name="loginName"
+                       data-i18n="_LoginName_|placeholder">
+                <div ng-messages="newUserForm.newUserEmail.$error">
+                    <div ng-if="newUserForm.loginName.$error.loading" ng-message="loading" i18n="_PleaseWaitLoading_"></div>
+                    <div ng-if="newUserForm.loginName.$error.unavailable" ng-message="unavailable" i18n="_LoginExists_"></div>
+                </div>
+            </md-input-container>
+        </div>
+        <div layout layout-sm="column">
+            <md-input-container flex>
+                <label i18n="_FirstName_"></label>
+                <input ng-model="user.firstName" data-i18n="_FirstName_|placeholder">
+            </md-input-container>
+            <md-input-container flex>
+                <label i18n="_LastName_"></label>
+                <input ng-model="user.lastName" data-i18n="_LastName_|placeholder">
+            </md-input-container>
+        </div>
+        <div layout layout-sm="column">
+            <md-input-container flex>
+                <label i18n="_Password_"></label>
+                <input ng-model="user.changePasswordTo" data-i18n="_Password_|placeholder">
+            </md-input-container>
+            <md-input-container flex>
+                <label i18n="_PasswordAgain_"></label>
+                <input ng-model="changePasswordToVerifier" data-i18n="_Password_|placeholder">
+            </md-input-container>
+        </div>
+        <div layout layout-sm="column">
+            <md-input-container flex>
+                <label i18n="_Mobile_"></label>
+                <input ng-model="user.mobilePhone" data-i18n="_Mobile_|placeholder">
+            </md-input-container>
+            <md-input-container flex ng-if="false">
+                <edit-in-place
+                               value="parentuser.username"
+                               edited="productEdited(parentuser)"
+                               removed="productRemoved(parentuser)"
+                               flex></edit-in-place>
+            </md-input-container>
+        </div>
+        <div flex layout="row" layout-align="end start">
+            <md-button class="md-icon-button md-primary md-raised" aria-label="save" ng-click="saveUser()">
+                <md-icon md-svg-icon="check"></md-icon>
+                <md-tooltip i18n="_Save_" md-direction="top"></md-tooltip>
+            </md-button>
+            <md-button class="md-icon-button md-warn md-raised" aria-label="cancel" ng-click="goBackToUsersList()">
+                <md-icon md-svg-icon="close"></md-icon>
+                <md-tooltip i18n="_Cancel_" md-direction="top"></md-tooltip>
+            </md-button>
+        </div>
+    </div>
+</md-content>
+<!-- -->
+<script type="text/ng-template" id="inPlaceEditor.html">
+    <div layout="row"
+         flex
+         layout-fill
+         layout-margin
+         layout-align="center center">
+        <div layout="row" flex layout-fill>
+            <div ng-bind="value" ng-hide="editing" layout-fill></div>
+            <md-input-container ng-show="editing" layout-fill>
+                <label>Nume</label>
+                <input required type="text"
+                       ng-model="value"
+                       focus-on="editing">
+            </md-input-container>
+        </div>
+        <div layout="row">
+            <md-button ng-if="!editing"
+                       class="md-icon-button" ng-click="edit()" aria-label="edit">
+                <md-icon md-svg-icon="pencil"></md-icon>
+            </md-button>
+            <md-button
+                    ng-if="!editing"
+                    class="md-icon-button"
+                    ng-click="delete($event, product)"
+                    aria-label="delete">
+                <md-icon md-svg-icon="delete" class="md-warn"></md-icon>
+            </md-button>
+
+            <md-button ng-if="editing"
+                       class="md-icon-button" ng-click="finishedEditing(product, true)" aria-label="edit">
+                <md-icon md-svg-icon="check"></md-icon>
+            </md-button>
+            <md-button
+                    ng-if="editing"
+                    class="md-icon-button"
+                    ng-click="finishedEditing(product, false)"
+                    aria-label="delete">
+                <md-icon md-svg-icon="close" class="md-warn"></md-icon>
+            </md-button>
+        </div>
+    </div>
+</script>

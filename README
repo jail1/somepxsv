@@ -1,0 +1,6 @@
+To build the server
+1) Install STS
+2) Import project from Git
+3) Right click on pom.xml > choose Run As > Maven install
+4) In "target" folder you will have the jar which you can run with java -jar <photox...jar>
+---

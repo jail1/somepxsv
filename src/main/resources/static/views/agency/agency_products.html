@@ -1,0 +1,14 @@
+<md-progress-linear ng-show="loading" md-mode="indeterminate"></md-progress-linear>
+<md-content layout="column" flex class="md-padding" ng-show="!loading" flex>
+    <md-toolbar ng-class="{'md-warn' : products.length == 0}" layout="row" layout-align="center center">
+        <span i18n="_NoProducts_" ng-if="products.length == 0" flex layout-margin></span>
+        <span flex ng-if="products.length>0">
+            <span class="md-accent md-text-float" i18n="_ProductsList_" layout-margin
+                  layout-align="center center"></span>
+        </span>
+        <md-button class="md-icon-button md-accent md-fab" ng-click="createProduct($event)" aria-label="Create product">
+            <md-icon md-svg-icon="library-plus"></md-icon>
+            <md-tooltip i18n="_Add_" md-direction="top"></md-tooltip>
+        </md-button>
+    </md-toolbar>
+</md-content>

@@ -1,0 +1,128 @@
+<md-progress-linear ng-show="loading" md-mode="indeterminate"></md-progress-linear>
+<md-content layout="column" flex class="md-padding" ng-show="!loading" flex>
+    <md-toolbar ng-class="{'md-warn' : products.length == 0}" layout="row" layout-align="center center">
+        <span i18n="_NoProducts_" ng-if="products.length == 0" flex layout-margin></span>
+        <span flex ng-if="products.length>0">
+            <span class="md-accent md-text-float" i18n="_ProductsList_" layout-margin
+                  layout-align="center center"></span>
+        </span>
+
+        <div layout="row" layout-align="center center">
+            <div layout-margin layout-padding>
+                {{localize.getLocalizedString('_DisplayableProducts_')}}
+            </div>
+            <div class="onoffswitch">
+                <input type="checkbox"
+                       name="onoffswitch"
+                       id="simpleProductsSwitch"
+                       class="onoffswitch-checkbox"
+                       aria-label="checkbox" ng-model="search.isListable">
+                <label class="onoffswitch-label" for="simpleProductsSwitch">
+                <span class="onoffswitch-inner">
+                    <span class="onoffswitch-active"><span class="onoffswitch-switch">{{localize.getLocalizedString('_Yes_')}}</span></span>
+                    <span class="onoffswitch-inactive"><span class="onoffswitch-switch">{{localize.getLocalizedString('_No_')}}</span></span>
+                </span>
+                </label>
+            </div>
+        </div>
+        <md-button class="md-icon-button md-accent md-fab" ng-click="createProduct($event)" aria-label="Create product">
+            <md-icon md-svg-icon="library-plus"></md-icon>
+            <md-tooltip i18n="_Add_" md-direction="top"></md-tooltip>
+        </md-button>
+    </md-toolbar>
+
+    <md-list>
+        <md-list-item class="md-3-line"
+                      ng-repeat="product in products | filter : search"
+                      md-swipe-right="askQuestionThenRemoveProduct($event, product)"
+                      md-swipe-left="editProduct($event, product)">
+
+            <md-card layout-padding layout-margin flex class="md-table-content-row" layout="row">
+                <div layout layout-sm="column" flex layout-fill>
+                    <div layout="row" flex layout-fill>
+                        <div class="md-list-item-text">
+                            <h3>
+                                <md-icon ng-if="product.isListable" md-svg-icon="account-check"></md-icon>
+                                <md-icon ng-if="!product.isListable" md-svg-icon="account-key"></md-icon>
+                                {{ product.name }}
+                            </h3>
+                            <h4>{{ product.description }}</h4>
+                            <h4 ng-if="product.isComplex " i18n="_ComplexProduct_"></h4>
+                            <h4 ng-if="!product.isComplex " i18n="_SimpleProduct_"></h4>
+                        </div>
+                    </div>
+                    <div layout="column" flex layout-fill>
+                        <div class="md-list-item-text" ng-if="!product.isComplex">
+                            <h4 class="md-list-item-text">
+                                {{localize.getLocalizedString('_ProductWidth_')+"="+product.extraData.width}}</h4>
+                            <h4 class="md-list-item-text">
+                                {{localize.getLocalizedString('_ProductHeight_')+"="+product.extraData.height}}</h4>
+                        </div>
+                        <div class="md-list-item-text"
+                             ng-if="product.isComplex"
+                             layout="row" layout-align="start center"
+                             ng-repeat="subproduct in product.children">
+                            <md-button class="md-icon-button md-primary"
+                                       ng-click="editProduct($event, subproduct)"
+                                       aria-label="edit">
+                                <md-icon md-svg-icon="eye"></md-icon>
+                            </md-button>
+                            <h4>{{subproduct.name}}</h4>
+                        </div>
+                    </div>
+                </div>
+                <md-button class="md-icon-button md-primary"
+                           ng-click="cloneProduct($event, product)"
+                           aria-label="Clone">
+                    <md-icon md-svg-icon="dice-2"></md-icon>
+                </md-button>
+            </md-card>
+
+        </md-list-item>
+    </md-list>
+
+
+</md-content>
+
+<script type="text/ng-template" id="cloneProductTemplateDialog.html">
+    <md-dialog aria-label="Raw Material">
+        <md-dialog-content class="sticky-container">
+            <md-toolbar class="md-sticky-no-effect" layout-align="center center" i18n="_CloneProduct_"></md-toolbar>
+            <form name="cloneForm">
+                <md-input-container layout-margin>
+                    <label i18n="_ProductName_"></label>
+                    <input required ng-model="product.name" data-i18n="_ProductName_|placeholder"
+                           md-maxlength="254">
+                </md-input-container>
+                <div layout layout-sm="column" layout-margin>
+                    <md-input-container flex>
+                        <label i18n="_ProductWidth_"></label>
+                        <input required
+                               type="number" step="any" name="newWidth"
+                               ng-model="product.extraData.width"
+                               data-i18n="_ProductWidth_|placeholder"
+                               ng-change="calculatePrice()">
+                    </md-input-container>
+                    <md-input-container flex>
+                        <label i18n="_ProductHeight_"></label>
+                        <input required
+                               type="number" step="any" name="newHeight"
+                               ng-model="product.extraData.height"
+                               data-i18n="_ProductHeight_|placeholder"
+                               ng-change="calculatePrice()">
+                    </md-input-container>
+                </div>
+            </form>
+        </md-dialog-content>
+
+        <div class="md-actions" layout="row">
+            <span flex></span>
+            <md-button ng-click="answer(product)" class="md-primary" i18n="_Save_" aria-label="Save">
+
+            </md-button>
+            <md-button ng-click="cancel()" class="md-primary md-warn" i18n="_Cancel_" aria-label="Cancel">
+
+            </md-button>
+        </div>
+    </md-dialog>
+</script>

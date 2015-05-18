@@ -1,0 +1,33 @@
+<div layout-margin layout-padding layout-fill flex>
+    <md-grid-list
+            md-cols="7"
+            md-row-height="fit"
+            md-gutter="4px">
+        <md-grid-tile
+                ng-repeat="day in vm.view.days track by $index"
+                ><!-- ng-click="vm.calendarCtrl.drillDown(day.date)" -->
+            <div layout="column" style="width: 100%;height: 100%">
+                <md-card layout="column" layout-fill flex>
+                    <md-toolbar class="md-medium-tall pointer">
+                        <span layout-padding layout="center center" layout-margin
+                              ng-class="{'cal-day-weekend': day.isWeekend, 'cal-day-past': day.isPast, 'cal-day-today': day.isToday, 'cal-day-future': day.isFuture}">{{ day.weekDayLabel }}, {{ day.dayLabel }}</span>
+                    </md-toolbar>
+                    <md-list>
+                        <md-item ng-repeat="event in vm.view.events | filter : {dayOffset : $index }">
+                            <md-item-content>
+                                <md-card
+                                        layout-fill flex layout-padding layout-margin
+                                        ng-click="onEventClick({calendarEvent: event})"
+                                        class="pointer day-highlight dh-event-{{ event.type }}"
+                                        layout-align="center center">
+                                    <small>{{event.startsAt|date:'HH:mm'}} - {{event.title}}</small>
+                                    <small>{{event.product}}</small>
+                                </md-card>
+                            </md-item-content>
+                        </md-item>
+                    </md-list>
+                </md-card>
+            </div>
+        </md-grid-tile>
+    </md-grid-list>
+</div>

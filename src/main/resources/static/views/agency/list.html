@@ -1,0 +1,69 @@
+<md-table
+        flex layout-fill
+        headers="tableHeaders"
+        content="events"
+        sortable="tableSortableFields"
+        count="tableElementsPerPage"
+        row-clicked="tableRowClicked(event, row, type)"
+        template-url="'tableview.html'">
+</md-table>
+<!-- Table template -->
+<script type="text/ng-template" id="tableview.html">
+        <div layout="column" layout-fill>
+                <div layout="row" layout-align="end center" style="margin-top:10px">
+                        <md-input-container layout="row" layout-fill layout-align="center center">
+                                <md-icon ng-if="!search.term" md-svg-icon="magnify"></md-icon>
+                                <md-icon ng-if="search.term" md-svg-icon="close" ng-click="clearSearch()"></md-icon>
+                                <input type="text"
+                                       ng-model="search.term"
+                                       aria-label="search"
+                                       placeholder="Cauta"/>
+                        </md-input-container>
+                        <md-button ng-disabled="currentPage==0" ng-click="previousPage()" aria-label="Pagina anterioară">
+                                <md-icon md-svg-icon="chevron-left"></md-icon>
+                        </md-button>
+                        <md-button ng-disabled="currentPage==nbOfPages()-1" ng-click="nextPage()" aria-label="Pagina următoare">
+                                <md-icon md-svg-icon="chevron-right"></md-icon>
+                        </md-button>
+                </div>
+                <md-divider></md-divider>
+                <md-content flex layout-fill>
+                        <table class="md-table" flex layout-fill>
+                                <thead>
+                                <tr class="md-table-headers-row">
+                                        <th ng-repeat="h in headers" class="md-table-header">
+                                                <md-button ng-if="handleSort(h.field)"
+                                                           ng-click="reverse=!reverse;order(h.field,reverse)">{{h.name}}
+                                                        <md-icon ng-show="reverse &amp;&amp; h.field == predicate"
+                                                                 md-svg-icon="chevron-up"></md-icon>
+                                                        <md-icon ng-show="!reverse &amp;&amp; h.field == predicate"
+                                                                 md-svg-icon="chevron-down"></md-icon>
+                                                </md-button>
+                                        </th>
+                                        <th class="md-table-header"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr ng-repeat="c in content | filter:search.term | startFrom:currentPage*count | limitTo: count"
+                                    ng-click="clicked(c, 'edit')"
+                                    class="md-table-content-row">
+                                        <td ng-repeat="h in headers"
+                                            ng-class="customClass[h.field]"
+                                            class="md-table-content">
+                                            <div ng-if="h.field.indexOf('startsAt') < 0">{{c[h.field]}}</div>
+                                            <div ng-if="h.field.indexOf('startsAt') >= 0">{{c[h.field] | date : 'short'}}</div>
+                                        </td>
+
+
+
+                                        <td class="md-table-td-more">
+                                                <md-button aria-label="Info" ng-click="$event.stopImmediatePropagation();clicked($event, c, 'delete')">
+                                                        <md-icon md-svg-icon="delete" class="md-warn"></md-icon>
+                                                </md-button>
+                                        </td>
+                                </tr>
+                                </tbody>
+                        </table>
+                </md-content>
+        </div>
+</script>

@@ -1,0 +1,36 @@
+<md-grid-list
+        md-cols="7"
+        md-row-height="3:1"
+        md-gutter="4px">
+    <md-grid-tile ng-repeat="day in vm.weekDays" layout="column" md-colspan="1">
+        <md-card layout-fill flex
+                 layout-align="center center"
+                 class="dh-event-info day-highlight">{{day}}
+        </md-card>
+    </md-grid-tile>
+</md-grid-list>
+<md-grid-list
+        md-cols="7"
+        md-row-height="4:3"
+        md-gutter="4px">
+    <md-grid-tile ng-repeat="day in vm.view track by $index"
+                  ng-show="day.inMonth"
+                  ng-click="vm.calendarCtrl.drillDown(day.date)"
+                  layout="column">
+        <md-card layout="column" layout-fill flex class="pointer">
+            <md-toolbar>
+                <span layout-padding layout-margin>{{day.label}}</span>
+            </md-toolbar>
+            <md-content flex layout-fill
+                        layout="row"
+                        layout-align="center center">
+                <small
+                        layout="row"
+                        layout-align="center center"
+                        flex
+                        layout-fill>{{day.events.length}} rezervări
+                </small>
+            </md-content>
+        </md-card>
+    </md-grid-tile>
+</md-grid-list>

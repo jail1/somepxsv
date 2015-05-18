@@ -1,0 +1,7 @@
+<md-button ng-class="{'active' : isSelected()}"
+           ui-sref="{{section.route}}"
+           ng-if="!section.displayed"
+           ng-click="focusSection()">
+    {{section.name.key| i18n}}
+  <span class="md-visually-hidden" ng-if="isSelected()"></span>
+</md-button>

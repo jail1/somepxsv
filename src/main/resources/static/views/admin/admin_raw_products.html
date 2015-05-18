@@ -1,0 +1,186 @@
+<md-progress-linear ng-show="loading" md-mode="indeterminate"></md-progress-linear>
+<md-content layout="column" flex class="md-padding" ng-show="!loading" flex>
+    <md-toolbar ng-class="{'md-warn' : groups.length == 0}" layout="row" layout-align="center center">
+        <span i18n="_NoRawMats_" ng-if="groups.length == 0" flex layout-margin></span>
+        <span flex ng-if="groups.length>0">
+            <span class="md-accent md-text-float" i18n="_RawProducts_" layout-margin
+                  layout-align="center center"></span>
+        </span>
+        <md-button class="md-icon-button md-accent md-fab" ng-click="createGroup($event)" aria-label="Create group">
+            <md-icon md-svg-icon="library-plus"></md-icon>
+            <md-tooltip i18n="_Add_" md-direction="top"></md-tooltip>
+        </md-button>
+    </md-toolbar>
+
+    <md-tabs md-selected="selectedTabIndex" md-border-bottom md-stretch-tabs="never" md-dynamic-height="false">
+        <md-tab ng-repeat="group in groups">
+            <md-tab-label>
+                <md-icon ng-if="group.isRequiredInEveryProduct" md-svg-icon="alert"></md-icon>
+                <md-icon ng-if="group.isSelector" md-svg-icon="bookmark-check"></md-icon>
+                {{group.name}}
+            </md-tab-label>
+            <md-tab-body>
+                <div class="md-no-sticky" layout="row" layout-align="end center">
+                    <div layout="column" flex layout-align="center start">
+                        <label>{{ group.isRequiredInEveryProduct ?
+                            localize.getLocalizedString('_MaterialDefault_') :
+                            localize.getLocalizedString('_MaterialNotDefault_') }}</label>
+
+                        <label>{{ group.isSelector ?
+                            localize.getLocalizedString('_MaterialListed_') :
+                            localize.getLocalizedString('_MaterialNotListed_')}}</label>
+                    </div>
+                    <md-button class="md-icon-button md-accent md-primary"
+                               ng-click="createRawMaterialInGroup($event, group)" aria-label="Create group">
+                        <md-icon md-svg-icon="library-plus"></md-icon>
+                        <md-tooltip i18n="_Add_" md-direction="top"></md-tooltip>
+                    </md-button>
+                    <md-button class="md-icon-button md-accent md-primary" ng-click="deleteGroup($event, group)"
+                               aria-label="delete group">
+                        <md-icon md-svg-icon="delete"></md-icon>
+                        <md-tooltip i18n="_Delete_" md-direction="top"></md-tooltip>
+                    </md-button>
+                </div>
+                <md-divider></md-divider>
+                <md-list>
+                    <md-list-item class="md-3-line"
+                                  ng-repeat="rawMaterial in group.rawMaterials | orderBy : '-id'"
+                                  md-swipe-right="askQuestionThenRemoveMaterial($event, rawMaterial, group)"
+                                  md-swipe-left="editMaterial($event, rawMaterial, group)">
+
+                        <md-card layout-padding layout-margin flex class="md-table-content-row">
+                            <div layout layout-sm="column">
+                                <div class="md-list-item-text">
+                                    <h3 ng-bind-html="rawMaterial.name"></h3>
+                                    <h4 ng-bind-html="rawMaterial.description"></h4>
+                                </div>
+                                <div class="md-list-item-text" layout-margin>
+                                    <p><span i18n="_AquisitionPrice_"></span> : {{ rawMaterial.aquisitionPrice }} EUR /
+                                        {{rawMaterial.aquisitionUnits}} <span i18n="_Units_"></span></p>
+
+                                    <p><span i18n="_UsagePerProductPrice_"></span> : {{
+                                        rawMaterial.pricePerProductionUnit
+                                        }}
+                                        EUR / {{rawMaterial.unitsPerProductionUnit}} <span i18n="_Units_"></span></p>
+
+                                </div>
+                            </div>
+                        </md-card>
+
+                    </md-list-item>
+                </md-list>
+            </md-tab-body>
+        </md-tab>
+    </md-tabs>
+
+</md-content>
+
+<script type="text/ng-template" id="createGroupTemplateDialog.html">
+    <md-dialog aria-label="Group">
+        <md-dialog-content class="sticky-container">
+            <md-toolbar class="md-sticky-no-effect" layout-align="center center" i18n="_RawGroup_"></md-toolbar>
+            <md-input-container layout-margin>
+                <label i18n="_RawGroupName_"></label>
+                <input required ng-model="group.name" data-i18n="_RawGroupName_|placeholder" focus-on="true" ng-data-delay="1000">
+            </md-input-container>
+            <md-input-container layout-margin ng-if="group.isSelector">
+                <label i18n="_RawGroupOrder_"></label>
+                <input required ng-model="group.selectorSequence" data-i18n="_RawGroupOrder_|placeholder">
+            </md-input-container>
+            <md-checkbox ng-model="group.isRequiredInEveryProduct"
+                         aria-label="Required in every product"
+                         ng-change="group.isRequiredInEveryProduct ? group.isSelector = false : angular.noop">
+                <span i18n="_MaterialDefault_"></span>
+            </md-checkbox>
+            <md-checkbox ng-model="group.isSelector" aria-label="displayed 2 enduser"
+                         ng-disabled="group.isRequiredInEveryProduct">
+                <span i18n="_MaterialListed_"></span>
+            </md-checkbox>
+        </md-dialog-content>
+        <div class="md-actions" layout="row">
+            <span flex></span>
+            <md-button ng-click="answer(group)" class="md-primary" i18n="_Save_" aria-label="Save">
+
+            </md-button>
+            <md-button ng-click="cancel()" class="md-primary md-warn" i18n="_Cancel_" aria-label="Cancel">
+
+            </md-button>
+        </div>
+    </md-dialog>
+</script>
+
+<script type="text/ng-template" id="createRawMaterialTemplateDialog.html">
+    <md-dialog aria-label="Raw Material">
+        <md-dialog-content class="sticky-container">
+            <md-toolbar class="md-sticky-no-effect" layout-align="center center" i18n="_RawMaterial_"></md-toolbar>
+            <div ng-form="rawMaterialForm">
+                <md-input-container layout-margin>
+                    <label i18n="_MaterialName_"></label>
+                    <input required name="rawMaterialName"
+                           ng-model="rawMaterial.name" data-i18n="_MaterialName_|placeholder"
+                           focus-on="true" ng-data-delay="1000"
+                           md-maxlength="254">
+                </md-input-container>
+                <md-input-container layout-margin>
+                    <label i18n="_MaterialDescription_"></label>
+                <textarea ng-model="rawMaterial.description" columns="1" md-maxlength="254"
+                          data-i18n="_MaterialDescription_|placeholder"></textarea>
+                </md-input-container>
+                <div layout layout-sm="column" layout-margin>
+                    <md-input-container flex>
+                        <label i18n="_AquisitionUnits_"></label>
+                        <input required
+                               name="aquisitionUnits"
+                               ng-model="rawMaterial.aquisitionUnits"
+                               area-calculator
+                               ng-blur="checkForConvetions()"
+                               data-i18n="_AquisitionUnits_|placeholder">
+                        <div ng-messages="rawMaterialForm.aquisitionUnits.$error">
+                            <div ng-if="rawMaterialForm.aquisitionUnits.$error.number" ng-message="number">Introduceți un număr!</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container flex>
+                        <label i18n="_AquisitionPrice_"></label>
+                        <input required
+                               type="number" step="any" name="aquisitionPrice"
+                               ng-model="rawMaterial.aquisitionPrice"
+                               data-i18n="_AquisitionPrice_|placeholder"
+                               ng-change="calculatePrice()">
+                    </md-input-container>
+                </div>
+                <div layout layout-sm="column" layout-margin>
+                    <md-input-container flex="50">
+                        <label i18n="_UsagePerProductUnits_"></label>
+                        <input required
+                               type="number" step="any" name="usagePerProductUnits"
+                               ng-model="rawMaterial.unitsPerProductionUnit"
+                               data-i18n="_UsagePerProductUnits_|placeholder"
+                               ng-change="calculatePrice()">
+                    </md-input-container>
+                    <md-input-container flex="50">
+                        <md-toolbar class="md-accent">
+                        <span class="md-toolbar-tools">
+                            {{localize.getLocalizedString('_UsagePerProductPrice_')}}
+                            <br>
+                            {{rawMaterial.pricePerProductionUnit}}
+                        </span>
+                        </md-toolbar>
+                    </md-input-container>
+                </div>
+            </div>
+        </md-dialog-content>
+
+        <div class="md-actions" layout="row">
+            <span flex></span>
+            <md-button ng-click="answer(rawMaterial)"
+                       class="md-primary"
+                       i18n="_Save_"
+                       aria-label="Save">
+
+            </md-button>
+            <md-button ng-click="cancel()" class="md-primary md-warn" i18n="_Cancel_" aria-label="Cancel">
+
+            </md-button>
+        </div>
+    </md-dialog>
+</script>

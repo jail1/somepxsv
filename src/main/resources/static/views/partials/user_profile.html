@@ -1,0 +1,54 @@
+<md-content layout="column" flex class="md-padding">
+    <md-subheader class="md-primary" i18n="_YourData_"></md-subheader>
+    <md-divider></md-divider>
+    <div layout layout-sm="column">
+        <md-input-container flex>
+            <label i18n="_Email_"></label>
+            <input disabled ng-model="loggedInUser.username" data-i18n="_Email_|placeholder">
+        </md-input-container>
+        <md-input-container flex>
+            <label i18n="_LoginName_"></label>
+            <input required ng-model="loggedInUser.loginName" data-i18n="_LoginName_|placeholder">
+        </md-input-container>
+    </div>
+    <div layout layout-sm="column">
+        <md-input-container flex>
+            <label i18n="_FirstName_"></label>
+            <input required ng-model="loggedInUser.firstName" data-i18n="_FirstName_|placeholder">
+        </md-input-container>
+        <md-input-container flex>
+            <label i18n="_LastName_"></label>
+            <input required ng-model="loggedInUser.lastName" data-i18n="_LastName_|placeholder">
+        </md-input-container>
+    </div>
+    <div layout layout-sm="column">
+        <md-input-container flex>
+            <label i18n="_Mobile_"></label>
+            <input required ng-model="loggedInUser.mobilePhone" data-i18n="_Mobile_|placeholder">
+        </md-input-container>
+        <md-input-container flex>
+        </md-input-container>
+    </div>
+    <md-subheader class="md-primary" i18n="_Password_"></md-subheader>
+    <md-divider></md-divider>
+    <div layout layout-sm="column">
+        <md-input-container flex>
+            <label i18n="_Password_"></label>
+            <input ng-model="loggedInUser.changePasswordTo" data-i18n="_Password_|placeholder" type="password">
+        </md-input-container>
+        <md-input-container flex>
+            <label i18n="_PasswordAgain_"></label>
+            <input ng-model="changePasswordToVerifier" data-i18n="_PasswordAgain_|placeholder" type="password">
+        </md-input-container>
+    </div>
+    <div flex layout="row" layout-align="end start">
+        <md-button class="md-icon-button md-primary" aria-label="save" ng-click="save()">
+            <md-icon md-svg-icon="check"></md-icon>
+            <md-tooltip i18n="_Save_" md-direction="top"></md-tooltip>
+        </md-button>
+        <md-button class="md-icon-button md-warn" aria-label="cancel" ng-click="cancel()">
+            <md-icon md-svg-icon="close"></md-icon>
+            <md-tooltip i18n="_Cancel_" md-direction="top"></md-tooltip>
+        </md-button>
+    </div>
+</md-content>

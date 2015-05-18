@@ -1,0 +1,9 @@
+<md-content layout="column" flex class="md-padding">
+    <div>
+
+        <md-select ng-model="user" md-on-open="loadUsers()" style="min-width: 200px;">
+            <md-select-label>{{ user ? user.name : 'Assign to user' }}</md-select-label>
+            <md-option ng-value="user" ng-repeat="user in users">{{user.name}}</md-option>
+        </md-select>
+    </div>
+</md-content>

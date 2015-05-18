@@ -1,0 +1,32 @@
+<div class="cal-day-box" layout-fill flex>
+    <div class="cal-day-panel" layout-fill flex>
+        <div class="cal-day-panel-hour">
+            <div class="cal-day-hour" ng-repeat="hour in vm.hours">
+                <div layout="row" class="cal-day-hour-part" layout-wrap>
+                    <div flex="5"><b>{{ hour.label }}</b></div>
+                    <div flex="95"></div>
+                </div>
+                <div layout="row" class="cal-day-hour-part" layout-wrap>
+                    <div flex="5"></div>
+                    <div flex="95"></div>
+                </div>
+            </div>
+        </div>
+        <md-card
+                class="day-event day-highlight dh-event-{{ event.type }} pointer"
+                ng-repeat="event in vm.view track by $index"
+                ng-click="onEventClick({calendarEvent: event})"
+                layout-align="center center"
+                ng-style="{top: event.top + 'px', left: event.left + 60 + 'px', height: event.height - 5 + 'px', border : 0 + 'px'}">
+            <div layout="row">
+                <md-icon md-svg-icon="account-check"></md-icon><!-- finished -->
+                <md-icon md-svg-icon="account-remove"></md-icon><!-- client h4asn't been here-->
+                <md-icon md-svg-icon="delete"></md-icon><!-- delete event -->                     <md-icon md-svg-icon="account-check"></md-icon><!-- finished -->
+                <md-icon md-svg-icon="account-remove"></md-icon><!-- client h4asn't been here-->
+                <md-icon md-svg-icon="delete"></md-icon><!-- delete event -->      
+            </div>
+            <small>{{ event.title | calendarTruncateEventTitle:20:event.height }}</small>
+            <small>{{event.product}}</small>
+        </md-card>
+    </div>
+</div>

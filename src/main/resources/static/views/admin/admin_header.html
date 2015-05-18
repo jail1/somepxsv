@@ -1,0 +1,18 @@
+<div class="md-toolbar-tools">
+    <md-button class="md-icon-button" aria-label="Settings" ng-click="toggleSidenav('left')" hide-gt-sm class="menuBtn">
+        <md-icon md-svg-icon="menu"></md-icon>
+    </md-button>
+    <h2>
+        <span>PhotoX</span>
+    </h2>
+    <span flex></span>
+    <div>{{::loggedInUser.firstName}} {{::loggedInUser.lastName}}</div>
+    <md-button class="md-icon-button" aria-label="Profile" ng-click="goToProfile()">
+        <md-icon md-svg-icon="view-carousel"></md-icon>
+        <md-tooltip id="Profile" i18n="_Profile_" md-direction="bottom"><md-tooltip>
+    </md-button>
+    <md-button class="md-icon-button" aria-label="Logout" ng-click="goToLogout()">
+        <md-icon md-svg-icon="logout"></md-icon>
+        <md-tooltip id="Logout" i18n="_Logout_" md-direction="bottom"><md-tooltip>
+    </md-button>
+</div>

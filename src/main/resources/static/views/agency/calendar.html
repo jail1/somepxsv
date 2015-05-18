@@ -1,0 +1,62 @@
+<div
+     ng-cloak
+     layout="column">
+    <div layout="row" layout-fill flex>
+        <h2 flex layout-padding layout-margin>{{ calendarTitle }}</h2>
+
+        <md-toolbar layout="row" flex="20" layout-align="space-around center">
+            <md-button
+                    calendar-date-modifier
+                    date="currentDay"
+                    aria-label="Prev"
+                    decrement="calendarView">
+                <md-icon md-svg-icon="chevron-left"></md-icon>
+            </md-button>
+            <md-button calendar-date-modifier
+                       aria-label="Today"
+                       date="currentDay"
+                       set-to-today>Azi
+            </md-button>
+            <md-button
+                    calendar-date-modifier
+                    aria-label="Next"
+                    date="currentDay"
+                    increment="calendarView">
+                <md-icon md-svg-icon="chevron-right"></md-icon>
+            </md-button>
+        </md-toolbar>
+
+        <md-radio-group ng-model="calendarView" layout="row" layout-align="end start" flex>
+            <md-radio-button class="md-primary" ng-value="'month'">Lună</md-radio-button>
+            <md-radio-button class="md-primary" ng-value="'week'">Săptămână</md-radio-button>
+            <md-radio-button class="md-primary" ng-value="'day'">Zi</md-radio-button>
+        </md-radio-group>
+    </div>
+    <div flex layout-fill style="min-height: 20px"></div>
+
+    <div layout="row">
+        <div style="background-color: red;" flex="25">asd</div>
+        
+        <main-calendar
+                layout="row"
+                flex="75"
+                layout-fill
+                layout-margin
+                layout-padding
+                events="events"
+                view="calendarView"
+                view-title="calendarTitle"
+                current-day="currentDay"
+                on-event-click="eventClicked(calendarEvent)"
+                edit-event-html="'<i class=\'glyphicon glyphicon-pencil\'></i>'"
+                delete-event-html="'<i class=\'glyphicon glyphicon-remove\'></i>'"
+                on-edit-event-click="eventEdited(calendarEvent)"
+                on-delete-event-click="eventDeleted(calendarEvent)"
+                on-drill-down-click="eventDrillDownClick(calendarEvent)"
+                auto-open="true"
+                day-view-start="10:00"
+                day-view-end="23:00"
+                day-view-split="30">
+        </main-calendar>
+    </div>
+</div>

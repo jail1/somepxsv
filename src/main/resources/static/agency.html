@@ -54,8 +54,7 @@
 <script src="./js/directives/angular-summernote.js"></script>
 -->
 <script src="./js/directives/ng-underscore.js"></script>
-<script src="./js/directives/calendar-with-tpls.js"></script>
-<script src="./js/directives/date-picker_directive.js"></script>
+<script src="./js/directives/mdDatePicker.js"></script>
 <script src="./js/directives/dropzone.js"></script>
 <script src="./js/directives/input-directives.js"></script>
 <script src="./js/directives/i18n.js"></script>
@@ -106,13 +105,15 @@
 <script src="./js/controllers/admin/adminSimpleProductController.js"></script>
 <script src="./js/controllers/admin/adminComposedProductController.js"></script>
 
-<script src="./js/controllers/agencySchedulerController.js"></script>
-<script src="./js/controllers/agencySchedulerSettingsController.js"></script>
+<script src="./js/controllers/agency/agencySchedulerController.js"></script>
+<script src="./js/controllers/agency/agencySchedulerSettingsController.js"></script>
 
 </head>
 
 <body layout="column" ng-controller="MainController">
+
 <md-toolbar data-ng-include=" 'views/admin/admin_header.html' "></md-toolbar>
+
 <div layout="row" flex>
     <md-sidenav layout="column"
                 style="background-color: #00BCD4" layout-fill

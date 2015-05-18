@@ -122,119 +122,119 @@
             alias: 'eye'
         },
         {
-            uri: 'icons/arrow-up.svg',
+            uri: './images/icons/arrow-up.svg',
             alias: 'arrow-up'
         },
         {
-            uri: 'icons/arrow-down.svg',
+            uri: './images/icons/arrow-down.svg',
             alias: 'arrow-down'
         },
         {
-            uri: 'icons/alert.svg',
+            uri: './images/icons/alert.svg',
             alias: 'alert'
         },
         {
-            uri: 'icons/account-key.svg',
+            uri: './images/icons/account-key.svg',
             alias: 'account-key'
         },
         {
-            uri: 'icons/plus.svg',
+            uri: './images/icons/plus.svg',
             alias: 'plus'
         },
         {
-            uri: 'icons/bookmark-check.svg',
+            uri: './images/icons/bookmark-check.svg',
             alias: 'bookmark-check'
         },
         {
-            uri:'icons/folder-move.svg',
+            uri:'./images/icons/folder-move.svg',
             alias:'folder-move'
         },
         {
-            uri:'icons/menu.svg',
+            uri:'./images/icons/menu.svg',
             alias:'menu'
         },
         {
-            uri:'icons/view-carousel.svg',
+            uri:'./images/icons/view-carousel.svg',
             alias:'view-carousel'
         },
         {
-            uri:'icons/logout.svg',
+            uri:'./images/icons/logout.svg',
             alias:'logout'
         },
         {
-            uri:'icons/library-plus.svg',
+            uri:'./images/icons/library-plus.svg',
             alias:'library-plus'
         },
         {
-            uri:'icons/dice-2.svg',
+            uri:'./images/icons/dice-2.svg',
             alias:'dice-2'
         },
         {
-            uri: 'icons/magnify.svg',
+            uri: './images/icons/magnify.svg',
             alias: 'magnify'
         },
         {
-            uri: 'icons/chevron-left.svg',
+            uri: './images/icons/chevron-left.svg',
             alias: 'chevron-left'
         },
         {
-            uri: 'icons/chevron-right.svg',
+            uri: './images/icons/chevron-right.svg',
             alias: 'chevron-right'
         },
         {
-            uri: 'icons/chevron-up.svg',
+            uri: './images/icons/chevron-up.svg',
             alias: 'chevron-up'
         },
         {
-            uri: 'icons/chevron-down.svg',
+            uri: './images/icons/chevron-down.svg',
             alias: 'chevron-down'
         },
         {
-            uri: 'icons/close.svg',
+            uri: './images/icons/close.svg',
             alias: 'close'
         },
         {
-            uri: 'icons/alarm.svg',
+            uri: './images/icons/alarm.svg',
             alias: 'alarm'
         },
         {
-            uri: 'icons/alert.svg',
+            uri: './images/icons/alert.svg',
             alias: 'alert'
         },
         {
-            uri: 'icons/account-check.svg',
+            uri: './images/icons/account-check.svg',
             alias: 'account-check'
         },
         {
-            uri: 'icons/account-remove.svg',
+            uri: './images/icons/account-remove.svg',
             alias: 'account-remove'
         },
         {
-            uri: 'icons/check.svg',
+            uri: './images/icons/check.svg',
             alias: 'check'
         },
         {
-            uri: 'icons/cloud-check.svg',
+            uri: './images/icons/cloud-check.svg',
             alias: 'cloud-check'
         },
         {
-            uri: 'icons/delete.svg',
+            uri: './images/icons/delete.svg',
             alias: 'delete'
         },
         {
-            uri: 'icons/settings.svg',
+            uri: './images/icons/settings.svg',
             alias: 'settings'
         },
         {
-            uri: 'icons/database-outline.svg',
+            uri: './images/icons/database-outline.svg',
             alias: 'database-outline'
         },
         {
-            uri: 'icons/calendar-multiple-check.svg',
+            uri: './images/icons/calendar-multiple-check.svg',
             alias: 'calendar-multiple-check'
         },
         {
-            uri: 'icons/pencil.svg',
+            uri: './images/icons/pencil.svg',
             alias: 'pencil'
         }
     ];
@@ -605,11 +605,10 @@
         'keyman',
         'ui.tree',
         'commons',
-
         'ui.router',
-        'calendar-with-tpls',
-        'date-picker',
-        'md.table',
+        'calendar',
+        'mdDatePicker',
+        'mdTable',
         'pagination',
         'progressbar',
         'toggle-switch'])

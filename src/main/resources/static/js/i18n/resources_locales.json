@@ -373,5 +373,25 @@
     "key": "_InvalidUsername_",
     "en_US": "Invalid username : should be an email address!",
     "ro_RO": "Adresa de email nu este validă"
+  },
+  {
+    "key": "_Scheduler_",
+    "en_US": "Scheduler",
+    "ro_RO": "Organizator"
+  },
+  {
+    "key": "_Month_",
+    "en_US": "Month",
+    "ro_RO": "Lună"
+  },
+  {
+    "key": "_Week_",
+    "en_US": "Week",
+    "ro_RO": "Săptămână"
+  },
+  {
+    "key": "_Day_",
+    "en_US": "Day",
+    "ro_RO": "Zi"
   }
 ]

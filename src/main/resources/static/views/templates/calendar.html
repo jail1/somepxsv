@@ -1,4 +1,6 @@
-<div class="cal-context" ng-switch="view" layout="column" layout-fill>
+<md-progress-linear ng-show="loading" md-mode="indeterminate"></md-progress-linear>
+
+<div class="cal-context" ng-switch="view" layout="column" layout-fill ng-show="!loading">
 
     <div ng-switch-default>The value passed to calendar-view is not set</div>
 

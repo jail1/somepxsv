@@ -1,0 +1,65 @@
+<div layout="row" layout-fill layout-align="space-between center">
+    <h1 class="md-display-2">Servicii</h1>
+    <md-button class="md-icon-button" ng-click="addNewProduct()" aria-label="add">
+        <md-icon md-svg-icon="plus"></md-icon>
+    </md-button>
+</div>
+<md-divider></md-divider>
+<md-list>
+    <md-list-item class="md-3-line"
+                  ng-repeat="product in products">
+        <md-card layout-padding flex layout="row">
+            <edit-in-place
+                           data="product"
+                           field="'name'"
+                           edited="productEdited(product)"
+                           removed="productRemoved(product)"
+                           template-url="'inPlaceEditor.html'"
+                           field-name="'Nume serviciu:'"
+                           flex></edit-in-place>
+        </md-card>
+    </md-list-item>
+</md-list>
+<!-- -->
+<script type="text/ng-template" id="inPlaceEditor.html">
+    <div layout="row"
+         flex
+         layout-fill
+         layout-margin
+         layout-align="center center">
+        <div layout="row" flex layout-fill>
+            <div ng-bind="data[field]" ng-hide="editing" layout-fill></div>
+            <md-input-container ng-show="editing" layout-fill>
+                <label>{{fieldName}}</label>
+                <input required type="text"
+                       ng-model="data[field]"
+                       focus-on="editing"><!-- use ng-data-delay="1000" in dialogs -->
+            </md-input-container>
+        </div>
+        <div layout="row">
+            <md-button ng-if="!editing"
+                       class="md-icon-button" ng-click="edit(data[field])" aria-label="edit">
+                <md-icon md-svg-icon="pencil"></md-icon>
+            </md-button>
+            <md-button
+                    ng-if="!editing"
+                    class="md-icon-button"
+                    ng-click="delete($event, data)"
+                    aria-label="delete">
+                <md-icon md-svg-icon="delete" class="md-warn"></md-icon>
+            </md-button>
+
+            <md-button ng-if="editing"
+                       class="md-icon-button" ng-click="finishedEditing(false)" aria-label="edit">
+                <md-icon md-svg-icon="check"></md-icon>
+            </md-button>
+            <md-button
+                    ng-if="editing"
+                    class="md-icon-button"
+                    ng-click="finishedEditing(true)"
+                    aria-label="delete">
+                <md-icon md-svg-icon="close" class="md-warn"></md-icon>
+            </md-button>
+        </div>
+    </div>
+</script>

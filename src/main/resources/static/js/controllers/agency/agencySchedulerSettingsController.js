@@ -4,9 +4,9 @@
 (function () {
     "use strict";
 
-    angular.module('photoX').controller('SettingsCtrl', Controller);
+    angular.module('photoX').controller('schedulerOptionsController', Controller);
 
-    angular.module('nowReservation').controller('ToastCtrl', function ($scope, $mdToast) {
+    angular.module('photoX').controller('ToastCtrl', function ($scope, $mdToast) {
         $scope.closeToast = function () {
             $mdToast.hide();
         };

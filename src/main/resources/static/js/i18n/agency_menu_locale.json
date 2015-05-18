@@ -113,13 +113,13 @@
         },
         "url": "\/list",
         "templateUrl": "\/views\/agency/list.html",
-        "controller": "schedulerListController"
+        "controller": "schedulerCalendarController"
       },
       {
-        "route":"scheduler.settigs",
+        "route":"scheduler.settings",
         "name": {
-          "key": "scheduler.settigs",
-          "en_US": "Scheduler settigs",
+          "key": "scheduler.settings",
+          "en_US": "Scheduler settings",
           "ro_RO": "Setari organizare"
         },
         "url": "\/list",

@@ -1,6 +1,19 @@
 <div
      ng-cloak
      layout="column">
+
+    <md-toolbar layout="row">
+        <div class="md-toolbar-tools">
+            <h1 flex>{{localize.getLocalizedString('_Scheduler_')}}</h1>
+            <md-button class="md-icon-button" ng-click="openRightMenu()">
+                <md-icon md-svg-icon="library-plus"></md-icon>
+            </md-button>
+            <md-button class="md-icon-button" ng-click="openSettings()">
+                <md-icon md-svg-icon="settings"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+
     <div layout="row" layout-fill flex>
         <h2 flex layout-padding layout-margin>{{ calendarTitle }}</h2>
 
@@ -27,19 +40,18 @@
         </md-toolbar>
 
         <md-radio-group ng-model="calendarView" layout="row" layout-align="end start" flex>
-            <md-radio-button class="md-primary" ng-value="'month'">Lună</md-radio-button>
-            <md-radio-button class="md-primary" ng-value="'week'">Săptămână</md-radio-button>
-            <md-radio-button class="md-primary" ng-value="'day'">Zi</md-radio-button>
+            <md-radio-button class="md-primary" ng-value="'month'">{{localize.getLocalizedString('_Month_')}}</md-radio-button>
+            <md-radio-button class="md-primary" ng-value="'week'">{{localize.getLocalizedString('_Week_')}}</md-radio-button>
+            <md-radio-button class="md-primary" ng-value="'day'">{{localize.getLocalizedString('_Day_')}}</md-radio-button>
         </md-radio-group>
     </div>
     <div flex layout-fill style="min-height: 20px"></div>
 
     <div layout="row">
-        <div style="background-color: red;" flex="25">asd</div>
         
         <main-calendar
                 layout="row"
-                flex="75"
+                flex
                 layout-fill
                 layout-margin
                 layout-padding

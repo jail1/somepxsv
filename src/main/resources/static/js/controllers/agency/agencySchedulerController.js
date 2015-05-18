@@ -4,9 +4,9 @@
 (function () {
     "use strict";
 
-    angular.module('photoX').controller('MainCtrl', Controller);
+    angular.module('photoX').controller('schedulerCalendarController', Controller);
 
-    angular.module('nowReservation').controller('ToastCtrl', function ($scope, $mdToast) {
+    angular.module('photoX').controller('ToastCtrl', function ($scope, $mdToast) {
         $scope.closeToast = function () {
             $mdToast.hide();
         };
@@ -86,7 +86,7 @@
             }
         };
         $scope.openSettings = function(){
-            $state.go('settings');
+            $state.go('scheduler.settings');
         }
 
         $scope.init = function () {

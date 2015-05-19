@@ -1,22 +1,22 @@
 <md-toolbar class="md-theme-indigo">
-    <h1 class="md-toolbar-tools">Adăugare rezervare</h1>
+    <h1 class="md-toolbar-tools">{{localize.getLocalizedString('_AdaugareRezervare_')}}</h1>
 </md-toolbar>
 <md-content layout="column" flex>
     <md-input-container>
-        <label>Nume</label>
+        <label>{{localize.getLocalizedString('_Name_')}}</label>
         <input ng-model="user.title" aria-label="title" md-sidenav-focus>
     </md-input-container>
     <md-input-container>
-        <label>Telefon</label>
+        <label>{{localize.getLocalizedString('_Telephone_')}}</label>
         <input ng-model="user.email" type="email" aria-label="email">
     </md-input-container>
     <div>
-        <label>Data rezervării</label>
+        <label>{{localize.getLocalizedString('_OrganizationData_')}}</label>
         <md-date-picker
                 model="pickedDate"
                 date-selected="dateSelected($value)"
                 label="Alegeți o dată"
-                locale="ro"
+                locale="{{localize.getLocalizedString('_localizedDatePickerData_')}}"
                 fixed-label="true"
                 popup-template="'popup.html'"
                 icon="calendar">
@@ -25,18 +25,18 @@
                 model="pickedDate"
                 date-selected="dateSelected($value)"
                 label="Alegeți o dată"
-                locale="ro"
+                locale="{{localize.getLocalizedString('_localizedDatePickerData_')}}"
                 fixed-label="true"
                 popup-template="'popup.html'"
                 icon="calendar">
         </md-date-picker>
     </div>
     <md-input-container>
-        <label>Serviciul</label>
+        <label>{{localize.getLocalizedString('_Product_')}}</label>
         <input type="datetime" ng-model="user.submissionDatetime" aria-label="datetime">
     </md-input-container>
     <md-input-container flex>
-        <label>Prestator</label>
+        <label>{{localize.getLocalizedString('_Provider_')}}</label>
         <textarea ng-model="user.biography" columns="1" md-maxlength="150" aria-label="presta"></textarea>
     </md-input-container>
     <md-autocomplete md-selected-item="selectedItem" md-search-text="searchText"
@@ -55,5 +55,5 @@
                 </span>
         </label>
     </div>
-    <md-button ng-click="validateAndSaveData()" class="md-raised md-accent">Salveaz?</md-button>
+    <md-button ng-click="validateAndSaveData()" class="md-raised md-accent">{{localize.getLocalizedString('_SaveSchedule_')}}</md-button>
 </md-bottom-sheet>

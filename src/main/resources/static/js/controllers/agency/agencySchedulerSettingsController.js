@@ -12,15 +12,15 @@
         };
     });
 
-    Controller.$inject = ['$scope', '$rootScope', '$log', 'moment', 'ApplicationServices', '$mdDialog', '$mdSidenav', '$mdToast', '$state', '$stateParams'];
+    Controller.$inject = ['$scope', '$rootScope', '$log', 'moment', 'ProductsService', '$mdDialog', '$mdSidenav', '$mdToast', '$state', '$stateParams'];
 
-    function Controller($scope, $rootScope, $log, moment, applicationServices, $mdDialog, $mdSidenav, $mdToast, $state, $stateParams) {
+    function Controller($scope, $rootScope, $log, moment, ProductsService, $mdDialog, $mdSidenav, $mdToast, $state, $stateParams) {
         var serverResponse = function(response){
             $scope.products = response;
         }
         $scope.init = function () {
             $scope.selectedIndex = 1;
-            applicationServices.getProducts().then(serverResponse);
+            ProductsService.getAllProducts().then(serverResponse);
         }
         $scope.showCustomToast = function () {
             $mdToast.show({

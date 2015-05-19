@@ -12,7 +12,7 @@
         };
     });
 
-    Controller.$inject = ['$scope', '$rootScope', '$log', 'moment', 'ApplicationServices', '$mdDialog', '$mdSidenav', '$mdToast', '$state', '$stateParams', '$timeout'];
+    Controller.$inject = ['$scope', '$rootScope', '$log', 'moment', 'schedulingServices', '$mdDialog', '$mdSidenav', '$mdToast', '$state', '$stateParams', '$timeout'];
 
     function Controller($scope, $rootScope, $log, moment, applicationServices, $mdDialog, $mdSidenav, $mdToast, $state, $stateParams, $timeout) {
 

@@ -2,19 +2,7 @@
 
 <div class="cal-context" ng-switch="view" layout="column" layout-fill ng-show="!loading">
 
-    <div ng-switch-default>The value passed to calendar-view is not set</div>
-
-    <!--<main-calendar-year
-          events="events"
-          current-day="currentDay"
-          on-event-click="onEventClick"
-          on-edit-event-click="onEditEventClick"
-          on-delete-event-click="onDeleteEventClick"
-          on-timespan-click="onTimespanClick"
-          edit-event-html="editEventHtml"
-          delete-event-html="deleteEventHtml"
-          auto-open="autoOpen"
-          ng-switch-when="year"></main-calendar-year>-->
+    <div ng-switch-default>{{localize.getLocalizedString('_CalErrVal_')}}</div>
 
     <main-calendar-month
             events="events"

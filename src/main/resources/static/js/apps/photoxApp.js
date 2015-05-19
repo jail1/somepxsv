@@ -78,10 +78,6 @@
             alias: 'cloud-check'
         },
         {
-            uri: './images/icons/delete.svg',
-            alias: 'delete'
-        },
-        {
             uri: './images/icons/plus.svg',
             alias: 'plus'
         },
@@ -621,5 +617,4 @@
         .provider('loadMenuFile', loadMenuFileProvider)
         .config(config)
         .run(appRun);
-
 })();

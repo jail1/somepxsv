@@ -393,5 +393,61 @@
     "key": "_Day_",
     "en_US": "Day",
     "ro_RO": "Zi"
+  },
+  {
+    "key": "CalErrVal",
+    "en_US": "The value passed to calendar-view is not set",
+    "ro_RO": " Valoarea dată calendarului nu este setată."
+  },
+  {
+    "key": "_NoProducts_",
+    "en_US": "There are no products available.",
+    "ro_RO": "Nu există produse selectate."    
+  },
+  {
+    "key": "_AdaugareRezervare_",
+    "en_US": "Add",
+    "ro_RO": "Adăugare"    
+  },
+  {
+    "key": "_Name_",
+    "en_US": "Name",
+    "ro_RO": "Nume"    
+  },
+  {
+    "key": "_Telephone_",
+    "en_US": "Telephone Number",
+    "ro_RO": "Numar Telefon"    
+  },
+  {
+    "key": "_Telephone_",
+    "en_US": "Telephone Number",
+    "ro_RO": "Numar Telefon"    
+  },
+  {
+    "key": "_OrganizationData_",
+    "en_US": "Scheduling Date",
+    "ro_RO": "Data organizare"    
+  },
+  {
+    "key": "_localizedDatePickerData_",
+    "en_US": "ro",
+    "ro_RO": "en"
+  },
+  {
+    "key": "_Product_",
+    "en_US": "Product",
+    "ro_RO": "Produs"
+  },
+  {
+    "key": "_Provider_",
+    "en_US": "Provider",
+    "ro_RO": "Prestator"
+  },
+  {
+    "key": "_SaveSchedule_",
+    "en_US": "Save Schedule",
+    "ro_RO": "Salvare organizare"
   }
+
 ]

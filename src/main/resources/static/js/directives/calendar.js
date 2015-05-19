@@ -605,6 +605,7 @@
                 'calendarHelper',
                 function ($scope, moment, calendarHelper) {
                     var vm = this;
+                    console.log('this')
                     var firstRun = true;
                     vm.openEvents = [];
                     $scope.$on('calendar.refreshView', function () {

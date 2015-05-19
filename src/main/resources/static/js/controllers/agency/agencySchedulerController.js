@@ -12,9 +12,9 @@
         };
     });
 
-    Controller.$inject = ['$scope', '$rootScope', '$log', 'moment', 'schedulingServices', '$mdDialog', '$mdSidenav', '$mdToast', '$state', '$stateParams', '$timeout'];
+    Controller.$inject = ['$scope', '$rootScope', '$log', 'moment', 'schedulingServices', '$mdDialog', '$mdSidenav', '$mdToast', '$state', '$stateParams', '$timeout', 'localize'];
 
-    function Controller($scope, $rootScope, $log, moment, applicationServices, $mdDialog, $mdSidenav, $mdToast, $state, $stateParams, $timeout) {
+    function Controller($scope, $rootScope, $log, moment, applicationServices, $mdDialog, $mdSidenav, $mdToast, $state, $stateParams, $timeout, localize) {
 
         /**
          * Table setup
@@ -26,19 +26,19 @@
          */
         $scope.tableHeaders = [
             {
-                name: 'ID',
+                name: 'ID', 
                 field: 'id'
             },
             {
-                name: 'Rezervare',
+                name: localize.getLocalizedString('_NoOrdersMonth_'),
                 field: 'startsAt'
             },
             {
-                name: 'Pacient',
+                name: localize.getLocalizedString('_Client_'),
                 field: 'title'
             },
             {
-                name: 'Serviciu',
+                name: localize.getLocalizedString('_Product_'),
                 field: 'product'
             }
         ];
@@ -223,13 +223,14 @@
             $log.log("------- Date time");
         };
 
-
         /**
          *  headers="headers"
          content="events"
          sortable="sortable"
          count="count"
          */
+
     }
+    
 }).call(this);
 

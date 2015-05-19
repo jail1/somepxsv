@@ -102,14 +102,6 @@
             alias: 'logout'
         },
         {
-            uri: './images/icons/library-plus.svg',
-            alias: 'library-plus'
-        },
-        {
-            uri: './images/icons/dice-2.svg',
-            alias: 'dice-2'
-        },
-        {
             uri: './images/icons/cart.svg',
             alias: 'cart'
         },
@@ -190,18 +182,6 @@
             alias: 'close'
         },
         {
-            uri: './images/icons/alarm.svg',
-            alias: 'alarm'
-        },
-        {
-            uri: './images/icons/alert.svg',
-            alias: 'alert'
-        },
-        {
-            uri: './images/icons/account-check.svg',
-            alias: 'account-check'
-        },
-        {
             uri: './images/icons/account-remove.svg',
             alias: 'account-remove'
         },
@@ -228,10 +208,6 @@
         {
             uri: './images/icons/calendar-multiple-check.svg',
             alias: 'calendar-multiple-check'
-        },
-        {
-            uri: './images/icons/pencil.svg',
-            alias: 'pencil'
         }
     ];
 

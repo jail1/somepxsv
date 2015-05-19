@@ -448,6 +448,16 @@
     "key": "_SaveSchedule_",
     "en_US": "Save Schedule",
     "ro_RO": "Salvare organizare"
+  },
+  {
+    "key": "_SchedulingList_",
+    "en_US": "Scheduling",
+    "ro_RO": "Organizarea"
+  },
+  {
+    "key": "_NoOrdersMonth_",
+    "en_US": "Orders",
+    "ro_RO": "Comenzi"
   }
 
 ]

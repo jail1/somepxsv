@@ -1,3 +1,24 @@
+<md-sidenav layout="column" class="md-sidenav-right md-whiteframe-z2"
+            data-ng-include=" 'views/agency/reservationForm.html' "
+            md-component-id="right" layout-fill>
+</md-sidenav>
+
+<div class="main-fab">
+  <md-button class="md-fab md-accent" ng-click="openRightMenu()">+</md-button>
+</div>
+
+<md-toolbar layout="column" class="md-tall"><span flex="flex"></span>
+  <div class="md-toolbar-tools">
+    <div layout="row" flex="flex" class="fill-height">
+      <div ng-hide="toggleSearch" class="md-toolbar-item md-breadcrumb"><span>Angular Material Table</span></div><span flex="flex" ng-hide="toggleSearch"></span>
+      <md-input-container flex="flex" style="padding-left:88px;" ng-show="toggleSearch">
+        <input type="text" ng-model="search"/>
+      </md-input-container>
+      <div layout="row" class="md-toolbar-item md-tools"><a href="href" ng-click="toggleSearch = !toggleSearch" class="md-button md-default-theme"><i class="ion-android-search"></i></a></div>
+    </div>
+  </div>
+</md-toolbar>
+
 <md-table
         flex layout-fill
         headers="tableHeaders"
@@ -9,9 +30,9 @@
 </md-table>
 <!-- Table template -->
 <script type="text/ng-template" id="tableview.html">
-        <div layout="column" layout-fill>
+        <div layout="column" layout-fill layout-padding>
                 <div layout="row" layout-align="end center" style="margin-top:10px">
-                        <md-input-container layout="row" layout-fill layout-align="center center">
+                        <md-input-container layout="row" layout-fill layout-align="center center" layout-sm="column">
                                 <md-icon ng-if="!search.term" md-svg-icon="magnify"></md-icon>
                                 <md-icon ng-if="search.term" md-svg-icon="close" ng-click="clearSearch()"></md-icon>
                                 <input type="text"
@@ -27,39 +48,44 @@
                         </md-button>
                 </div>
                 <md-divider></md-divider>
-                <md-content flex layout-fill>
+                <md-content layout="row" layout-fill  layout-sm="column">
                         <table class="md-table" flex layout-fill>
-                                <thead>
-                                <tr class="md-table-headers-row">
-                                        <th ng-repeat="h in headers" class="md-table-header">
-                                                <md-button ng-if="handleSort(h.field)"
-                                                           ng-click="reverse=!reverse;order(h.field,reverse)">{{h.name}}
-                                                        <md-icon ng-show="reverse &amp;&amp; h.field == predicate"
-                                                                 md-svg-icon="chevron-up"></md-icon>
-                                                        <md-icon ng-show="!reverse &amp;&amp; h.field == predicate"
-                                                                 md-svg-icon="chevron-down"></md-icon>
-                                                </md-button>
+                                <thead layout="column">
+                                <tr class="md-table-headers-row" layout="row"  layout-sm="column">
+                                        <th ng-repeat="h in headers" class="md-table-header" flex>
+                                            <md-button ng-if="handleSort(h.field)"
+                                                       ng-click="reverse=!reverse;order(h.field,reverse)">{{h.name}}
+                                                    <md-icon ng-show="reverse &amp;&amp; h.field == predicate"
+                                                             md-svg-icon="chevron-up"></md-icon>
+                                                    <md-icon ng-show="!reverse &amp;&amp; h.field == predicate"
+                                                             md-svg-icon="chevron-down"></md-icon>
+                                            </md-button>
                                         </th>
                                         <th class="md-table-header"></th>
                                 </tr>
                                 </thead>
-                                <tbody>
+                                <tbody layout="column">
                                 <tr ng-repeat="c in content | filter:search.term | startFrom:currentPage*count | limitTo: count"
                                     ng-click="clicked(c, 'edit')"
-                                    class="md-table-content-row">
+                                    class="md-table-content-row"
+                                    layout="row"  layout-sm="column"
+                                    >
                                         <td ng-repeat="h in headers"
                                             ng-class="customClass[h.field]"
-                                            class="md-table-content">
+                                            class="md-table-content"
+                                            flex>
                                             <div ng-if="h.field.indexOf('startsAt') < 0">{{c[h.field]}}</div>
                                             <div ng-if="h.field.indexOf('startsAt') >= 0">{{c[h.field] | date : 'short'}}</div>
                                         </td>
 
-
-
                                         <td class="md-table-td-more">
-                                                <md-button aria-label="Info" ng-click="$event.stopImmediatePropagation();clicked($event, c, 'delete')">
-                                                        <md-icon md-svg-icon="delete" class="md-warn"></md-icon>
-                                                </md-button>
+                                                <md-select placeholder="Pick" ng-model="someVal" layout="column" layout-align="center center" flex>
+                                                    <md-option value="1">
+                                                    Sterge</md-option>
+                                                    <md-option value="2">
+                                                    Editeaza</md-option>
+                                                </md-select>
+
                                         </td>
                                 </tr>
                                 </tbody>

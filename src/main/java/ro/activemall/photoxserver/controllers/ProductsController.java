@@ -22,7 +22,7 @@ import ro.activemall.photoxserver.services.ProductsService;
 
 @RestController
 public class ProductsController {
-
+	
 	@Autowired
 	ProductsService service;
 

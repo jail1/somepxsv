@@ -3,7 +3,7 @@
 </md-toolbar>
 <md-content layout="column" flex>
     <md-input-container>
-        <label>{{localize.getLocalizedString('_Name_')}}</label>
+        <label>{{localize.getLocalizedString('_Name2_')}}</label>
         <input ng-model="user.title" aria-label="title" md-sidenav-focus>
     </md-input-container>
     <md-input-container>
@@ -35,6 +35,8 @@
         <label>{{localize.getLocalizedString('_Product_')}}</label>
         <input type="datetime" ng-model="user.submissionDatetime" aria-label="datetime">
     </md-input-container>
+    <md-button ng-click="openPickProducts()" class="md-raised md-accent">{{localize.getLocalizedString('_Product_')}}</md-button>
+      
     <md-input-container flex>
         <label>{{localize.getLocalizedString('_Provider_')}}</label>
         <textarea ng-model="user.biography" columns="1" md-maxlength="150" aria-label="presta"></textarea>
@@ -56,4 +58,5 @@
         </label>
     </div>
     <md-button ng-click="validateAndSaveData()" class="md-raised md-accent">{{localize.getLocalizedString('_SaveSchedule_')}}</md-button>
+    <md-button ng-click="openRightMenu()" class="md-raised md-accent">Another SB</md-button>
 </md-bottom-sheet>

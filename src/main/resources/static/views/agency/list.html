@@ -10,7 +10,7 @@
 <md-toolbar layout="column" class="md-tall"><span flex="flex"></span>
   <div class="md-toolbar-tools">
     <div layout="row" flex="flex" class="fill-height">
-      <div ng-hide="toggleSearch" class="md-toolbar-item md-breadcrumb"><span>Angular Material Table</span></div><span flex="flex" ng-hide="toggleSearch"></span>
+      <div ng-hide="toggleSearch" class="md-toolbar-item md-breadcrumb"><span>{{localize.getLocalizedString('_ScheduleList_')}}</span></div><span flex="flex" ng-hide="toggleSearch"></span>
       <md-input-container flex="flex" style="padding-left:88px;" ng-show="toggleSearch">
         <input type="text" ng-model="search"/>
       </md-input-container>
@@ -38,7 +38,7 @@
                                 <input type="text"
                                        ng-model="search.term"
                                        aria-label="search"
-                                       placeholder="Cauta"/>
+                                       placeholder="{{localize.getLocalizedString('_Search_')}}"/>
                         </md-input-container>
                         <md-button ng-disabled="currentPage==0" ng-click="previousPage()" aria-label="Pagina anterioară">
                                 <md-icon md-svg-icon="chevron-left"></md-icon>
@@ -50,7 +50,7 @@
                 <md-divider></md-divider>
                 <md-content layout="row" layout-fill  layout-sm="column">
                         <table class="md-table" flex layout-fill>
-                                <thead layout="column">
+                                <thead layout="column" flex>
                                 <tr class="md-table-headers-row" layout="row"  layout-sm="column">
                                         <th ng-repeat="h in headers" class="md-table-header" flex>
                                             <md-button ng-if="handleSort(h.field)"

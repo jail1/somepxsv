@@ -230,6 +230,11 @@
     "ro_RO": "Nume {0}"
   },
   {
+    "key": "_Name2_",
+    "en_US": "Name",
+    "ro_RO": "Nume"
+  },
+  {
     "key": "_Description_",
     "en_US": "Description {0}",
     "ro_RO": "Descriere {0}"
@@ -252,7 +257,7 @@
   {
     "key": "_PleaseSelect_",
     "en_US": "Please select",
-    "ro_RO": "Selectati"
+    "ro_RO": "Selectați "
   },
   {
     "key": "_SelectParent_",
@@ -458,6 +463,10 @@
     "key": "_NoOrdersMonth_",
     "en_US": "Orders",
     "ro_RO": "Comenzi"
+  },
+  {
+    "key": "_ScheduleList_",
+    "en_US": "Schedule List",
+    "ro_RO": "Listare comenzi"
   }
-
 ]

@@ -449,6 +449,8 @@
                     $templateCache,
                     ICONS_URLS) {
 
+        console.log('this is the right file.');
+
         angular.forEach(ICONS_URLS, function (url) {
             $http.get(url.uri, {cache: $templateCache});
         });
@@ -583,7 +585,9 @@
         'mdTable',
         'pagination',
         'progressbar',
-        'toggle-switch'])
+        'toggle-switch',
+        'dynamic-checkboxes'
+        ])
         .constant("APP_URL", "/private/API/v1")
         .constant("LOCALE_FILES", localeFiles)
         .constant("MENU_FILE", menuFile)

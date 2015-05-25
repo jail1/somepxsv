@@ -16,6 +16,76 @@
 
     function Controller($scope, $rootScope, $log, moment, applicationServices, $mdDialog, $mdSidenav, $mdToast, $state, $stateParams, $timeout, localize) {
 
+        /*
+        * #############
+        *   Toggle-able
+        * #############
+        */
+
+        $scope.showCustomToast = function () {
+            $mdToast.show({
+                controller: 'ToastCtrl',
+                template: '<md-toast>Yeap, informatia a fost salvata! <md-icon md-svg-icon="cloud-check" style="color:white"></md-icon></md-toast>',
+                hideDelay: 6000
+            });
+        };
+
+        $scope.openTimeDatePicker = function () {
+            $mdDialog.show({
+                template: '<md-dialog>' +
+                '  <md-content>' +
+                '   <time-date-picker ng-model="reservationTime" orientation="true"></time-date-picker></md-content>' +
+                '  <div class="md-actions">' +
+                '    <md-button ng-click="closeDialog()">' +
+                '      Inchide' +
+                '    </md-button>' +
+                '  </div>' +
+                '</md-dialog>',
+                controller: 'MainCtrl'
+            });
+        };
+
+        $scope.openDialog = function ($event) {
+            $mdDialog.show({
+                targetEvent: $event,
+                template: '<md-dialog>' +
+                '  <md-content>Hello {{ userName }}!</md-content>' +
+                '  <div class="md-actions">' +
+                '    <md-button ng-click="closeDialog()">' +
+                '      Close' +
+                '    </md-button>' +
+                '  </div>' +
+                '</md-dialog>',
+                controller: 'DialogController',
+                onComplete: afterShowAnimation,
+                locals: {
+                    name: 'Bobby'
+                }
+            });
+    
+            function afterShowAnimation(scope, element, options) {
+                // post-show code here: DOM element focus, etc.
+            }
+
+        };
+
+        $scope.showSelectProductModal = function($event) {
+            $mdDialog.show({
+                targetEvent: $event,
+                controller: function() {
+                    $scope.selectedProduct;
+                }, 
+                templateUrl: 'views/dialogs/select.product.dialog.tmpl.html'
+            })
+            .then(function(answer) {
+                $scope.alertPick = 'You said the information was "' + answer + '".';
+            }, function() {
+                $scope.alertPick = 'You cancelled the dialog.';
+            });
+
+            console.log($scope.alertPick)
+        };
+
         /**
          * Table setup
          * TODO : remove id when you finish
@@ -70,14 +140,6 @@
          * End table setup
          */
 
-        $scope.showCustomToast = function () {
-            $mdToast.show({
-                controller: 'ToastCtrl',
-                template: '<md-toast>Yeap, informatia a fost salvata! <md-icon md-svg-icon="cloud-check" style="color:white"></md-icon></md-toast>',
-                hideDelay: 6000
-            });
-        };
-
         $scope.switchBetweenModes = function () {
             if ($state.current.name == 'calendar'){
                 $state.go('list');
@@ -95,8 +157,11 @@
             $scope.calendarView = 'day';
             $scope.currentDay = new Date();
             $scope.events = [];
-            applicationServices.provideTestData().then(function (result) {
+            applicationServices.provideTestScheduleData().then(function (result) {
                 $scope.events = result;
+            });
+            applicationServices.provideTestProductData().then(function (result) {
+                $scope.products = result;
             });
             /**
              applicationServices.getPersonsProducts().then(function(response){
@@ -111,11 +176,16 @@
         };
 
 
-        $scope.openRightMenu = function () {
-            $mdSidenav('right').toggle();
+        $scope.openPickProducts = function() {
+            // $mdSidenav('newSchedule').toggle();
+            $mdSidenav('pickProducts').toggle();
+        }
+
+        $scope.openNewSchedule = function () {
+            $mdSidenav('newSchedule').toggle();
         };
         $scope.validateAndSaveData = function () {
-            $mdSidenav('right').toggle();
+            $mdSidenav('newSchedule').toggle();
             $log.log("Cleanup");
         }
 
@@ -123,52 +193,12 @@
         var currentMonth = moment().month();
         var currentDay = moment().date();
 
+        
 
-        //not used
-        $scope.openTimeDatePicker = function () {
-            $mdDialog.show({
-                template: '<md-dialog>' +
-                '  <md-content>' +
-                '   <time-date-picker ng-model="reservationTime" orientation="true"></time-date-picker></md-content>' +
-                '  <div class="md-actions">' +
-                '    <md-button ng-click="closeDialog()">' +
-                '      Inchide' +
-                '    </md-button>' +
-                '  </div>' +
-                '</md-dialog>',
-                controller: 'MainCtrl'
-            });
-        };
-        //not used
         $scope.closeDialog = function () {
             $log.log("Picker dialog closed : " + $scope.reservationTime);
             $mdDialog.hide();
         }
-        //not used
-        $scope.openDialog = function ($event) {
-            $mdDialog.show({
-                targetEvent: $event,
-                template: '<md-dialog>' +
-                '  <md-content>Hello {{ userName }}!</md-content>' +
-                '  <div class="md-actions">' +
-                '    <md-button ng-click="closeDialog()">' +
-                '      Close' +
-                '    </md-button>' +
-                '  </div>' +
-                '</md-dialog>',
-                controller: 'DialogController',
-                onComplete: afterShowAnimation,
-                locals: {
-                    name: 'Bobby'
-                }
-            });
-            // When the 'enter' animation finishes...
-            function afterShowAnimation(scope, element, options) {
-                // post-show code here: DOM element focus, etc.
-            }
-        };
-
-
 
         function showModal(action, event) {
             console.log("should show modal");
@@ -203,6 +233,12 @@
             showModal('Drilldown click', calendarEvent);
         }
 
+        /*
+        * #############
+        *   Utils
+        * #############
+        */
+
         $scope.toggle = function ($event, field, event) {
             $log.log('toggle');
             $event.preventDefault();
@@ -215,7 +251,6 @@
         //ListView
         $scope.toggleSearch = false;
 
-
         $scope.pickedDate = new Date(currentYear, currentMonth, currentDay - 13, 10, 0);
         $scope.dateSelected = function (newValue) {
             $log.log("Date time -------");
@@ -223,14 +258,11 @@
             $log.log("------- Date time");
         };
 
-        /**
-         *  headers="headers"
-         content="events"
-         sortable="sortable"
-         count="count"
-         */
+        
 
     }
-    
+
+
+
 }).call(this);
 

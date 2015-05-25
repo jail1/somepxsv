@@ -3,14 +3,23 @@
      layout="column">
 
     <md-sidenav layout="column" class="md-sidenav-right md-whiteframe-z2"
+                layout="row"
+                style="max-width:50%"    
                 data-ng-include=" 'views/agency/reservationForm.html' "
-                md-component-id="right" layout-fill>
+                md-component-id="newSchedule" layout-fill>
+    </md-sidenav>
+
+    <md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2"
+                layout="row"
+                style="max-width:50%"
+                data-ng-include=" 'views/agency/reservationForm2.html' "
+                md-component-id="pickProducts" layout-fill>
     </md-sidenav>
 
     <md-toolbar layout="row">
         <div class="md-toolbar-tools">
             <h1 flex>{{localize.getLocalizedString('_Scheduler_')}}</h1>
-            <md-button class="md-icon-button" ng-click="openRightMenu()">
+            <md-button class="md-icon-button" ng-click="openNewSchedule()">
                 <md-icon md-svg-icon="library-plus"></md-icon>
             </md-button>
             <md-button class="md-icon-button" ng-click="openSettings()">

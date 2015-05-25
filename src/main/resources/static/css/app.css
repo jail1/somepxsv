@@ -274,7 +274,6 @@ i {
 }
 
 md-input-container.md-default-theme .md-input {
-  color: white;
-  border-color: white;
+  border-color: rgba(0, 0, 0, .55);
   margin-top: 24px;
 }
